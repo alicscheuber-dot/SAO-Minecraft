@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Quêtes Secondaires</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quete_secondaire.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+</head>
+<body>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="quetes.html" class="nav-back-icon" title="Retour aux quêtes"></a>
+    <div class="quete-container">
+        <h1 class="quete-title">QUÊTES SECONDAIRES</h1>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher une quête..." autocomplete="off">
+                <div class="search-icon">🔍</div>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <div class="quete-grid" id="queteGrid">
+            <div class="quete-card" data-name="saria" onclick="window.location.href='quete_saria.html'">
+                <h3>Saria</h3>
+                <p>Requête de Saria</p>
+            </div>
+            
+            <div class="quete-card" data-name="meiko" onclick="window.location.href='quete_meiko.html'">
+                <h3>Meiko</h3>
+                <p>Requête de Meiko</p>
+            </div>
+            
+            <div class="quete-card" data-name="rikyu">
+                <h3>Rikyu</h3>
+                <p>Aventure dans les profondeurs</p>
+            </div>
+            
+            <div class="quete-card" data-name="inari" onclick="window.location.href='quete_inari.html'">
+                <h3>Inari</h3>
+                <p>Requête d'Inari</p>
+            </div>
+            
+            <div class="quete-card" data-name="orin" onclick="window.location.href='quete_orin.html'">
+                <h3>Orin</h3>
+                <p>Requête d'Orin</p>
+            </div>
+            
+            <div class="quete-card" data-name="lila" onclick="window.location.href='quete_lila.html'">
+                <h3>Lila</h3>
+                <p>Requête de Lila</p>
+            </div>
+            
+            <div class="quete-card" data-name="tilda" onclick="window.location.href='quete_tilda.html'">
+                <h3>Tilda</h3>
+                <p>Requête de Tilda</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="quete_secondaire.js"></script>
+</body>
+</html>

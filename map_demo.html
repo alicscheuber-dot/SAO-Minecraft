@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Carte Démo</title>
+    <link rel="stylesheet" href="navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FCE5C3 0%, #402C39 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .map-container {
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .map-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #402C39;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+
+        .map-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: #402C39;
+            color: #FCE5C3;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: #FCE5C3;
+            color: #402C39;
+            transform: scale(1.1);
+        }
+
+        .map-wrapper {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            background: #2a2a2a;
+            border-radius: 10px;
+            min-height: 500px;
+        }
+
+        .map-canvas:active {
+            cursor: grabbing;
+        }
+
+        .map-tile {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .map-tile:hover {
+            opacity: 0.8;
+            z-index: 10;
+            transform: scale(1.05);
+        }
+
+        .map-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: #402C39;
+        }
+
+        .map-info p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .back-button {
+            padding: 0.8rem 1.5rem;
+            background: #402C39;
+            color: #FCE5C3;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+        }
+
+        .back-button:hover {
+            background: #FCE5C3;
+            color: #402C39;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(64, 44, 57, 0.4);
+        }
+
+        .biome-forest { background: linear-gradient(45deg, #228B22, #32CD32); }
+        .biome-desert { background: linear-gradient(45deg, #F4A460, #DEB887); }
+        .biome-mountain { background: linear-gradient(45deg, #696969, #A9A9A9); }
+        .biome-ocean { background: linear-gradient(45deg, #4682B4, #87CEEB); }
+        .biome-plains { background: linear-gradient(45deg, #9ACD32, #ADFF2F); }
+        .biome-swamp { background: linear-gradient(45deg, #556B2F, #6B8E23); }
+        .biome-snow { background: linear-gradient(45deg, #F0F8FF, #E6E6FA); }
+        .biome-village { background: linear-gradient(45deg, #8B4513, #CD853F); }
+        .biome-special { background: linear-gradient(45deg, #FCE5C3, #F7B596); color: #402C39; }
+    </style>
+</head>
+<body>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <div class="map-container">
+        <div class="map-header">
+            <h1 class="map-title">CARTE DU MONDE SAO MINECRAFT</h1>
+            <div class="map-controls">
+                <button id="zoomIn" class="control-btn">+</button>
+                <button id="zoomOut" class="control-btn">-</button>
+                <button id="resetView" class="control-btn">⌂</button>
+                <button id="toggleBiomes" class="control-btn">🌍</button>
+            </div>
+        </div>
+        
+        <div class="map-wrapper">
+            <div id="mapCanvas" class="map-canvas">
+                <!-- La carte sera générée ici -->
+            </div>
+        </div>
+        
+        <div class="map-info">
+            <p>Utilisez la molette de la souris pour zoomer • Cliquez et glissez pour naviguer</p>
+            <button class="back-button" onclick="window.location.href='locations.html'">← Retour aux lieux</button>
+        </div>
+    </div>
+    
+    <script>
+        class DemoMapRenderer {
+            constructor() {
+                this.canvas = document.getElementById('mapCanvas');
+                this.zoom = 1;
+                this.panX = 0;
+                this.panY = 0;
+                this.isDragging = false;
+                this.lastMouseX = 0;
+                this.lastMouseY = 0;
+                this.showBiomes = true;
+                
+                // Données de la carte SAO Minecraft
+                this.mapData = [
+                    {x: -2, y: -2, name: "Ville du Départ", biome: "village", color: "#FCE5C3", special: true},
+                    {x: -1, y: -2, name: "Hanaka", biome: "forest", color: "#228B22"},
+                    {x: 0, y: -2, name: "Vallet des Loups", biome: "forest", color: "#228B22"},
+                    {x: 1, y: -2, name: "Marécage Putride", biome: "swamp", color: "#556B2F"},
+                    {x: 2, y: -2, name: "Zonne Sanglier", biome: "forest", color: "#228B22"},
+                    
+                    {x: -2, y: -1, name: "Vallée des Pétalles", biome: "plains", color: "#9ACD32"},
+                    {x: -1, y: -1, name: "Mizunari", biome: "ocean", color: "#4682B4"},
+                    {x: 0, y: -1, name: "Archipel d'Ika", biome: "ocean", color: "#4682B4"},
+                    {x: 1, y: -1, name: "Quartier OG", biome: "village", color: "#8B4513"},
+                    {x: 2, y: -1, name: "Cyclorim", biome: "mountain", color: "#696969"},
+                    
+                    {x: -2, y: 0, name: "Castel Brume", biome: "mountain", color: "#696969"},
+                    {x: -1, y: 0, name: "Vallhat", biome: "plains", color: "#9ACD32"},
+                    {x: 0, y: 0, name: "Jardin des Géants", biome: "forest", color: "#228B22"},
+                    {x: 1, y: 0, name: "Zone Mystique", biome: "snow", color: "#F0F8FF"},
+                    {x: 2, y: 0, name: "Terres Sauvages", biome: "desert", color: "#F4A460"},
+                    
+                    {x: -2, y: 1, name: "Forêt Ancienne", biome: "forest", color: "#228B22"},
+                    {x: -1, y: 1, name: "Lac Caché", biome: "ocean", color: "#4682B4"},
+                    {x: 0, y: 1, name: "Montagnes du Nord", biome: "mountain", color: "#696969"},
+                    {x: 1, y: 1, name: "Désert de Sable", biome: "desert", color: "#F4A460"},
+                    {x: 2, y: 1, name: "Plaines Dorées", biome: "plains", color: "#9ACD32"},
+                    
+                    {x: -2, y: 2, name: "Côte Ouest", biome: "ocean", color: "#4682B4"},
+                    {x: -1, y: 2, name: "Village Pêcheur", biome: "village", color: "#8B4513"},
+                    {x: 0, y: 2, name: "Forêt Enchantée", biome: "forest", color: "#228B22"},
+                    {x: 1, y: 2, name: "Plateau Central", biome: "plains", color: "#9ACD32"},
+                    {x: 2, y: 2, name: "Terres Arides", biome: "desert", color: "#F4A460"}
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.renderMap();
+            }
+            
+            setupEventListeners() {
+                document.getElementById('zoomIn').addEventListener('click', () => this.zoomIn());
+                document.getElementById('zoomOut').addEventListener('click', () => this.zoomOut());
+                document.getElementById('resetView').addEventListener('click', () => this.resetView());
+                document.getElementById('toggleBiomes').addEventListener('click', () => this.toggleBiomes());
+                
+                this.canvas.addEventListener('mousedown', (e) => this.startDrag(e));
+                this.canvas.addEventListener('mousemove', (e) => this.drag(e));
+                this.canvas.addEventListener('mouseup', () => this.endDrag());
+                this.canvas.addEventListener('mouseleave', () => this.endDrag());
+                this.canvas.addEventListener('wheel', (e) => this.handleWheel(e));
+            }
+            
+            renderMap() {
+                this.canvas.innerHTML = '';
+                
+                const canvasRect = this.canvas.getBoundingClientRect();
+                const centerX = canvasRect.width / 2;
+                const centerY = canvasRect.height / 2;
+                const tileSize = 80 * this.zoom;
+                
+                this.mapData.forEach((tile, index) => {
+                    const tileElement = document.createElement('div');
+                    tileElement.className = `map-tile ${tile.special ? 'biome-special' : `biome-${tile.biome}`}`;
+                    tileElement.style.width = `${tileSize}px`;
+                    tileElement.style.height = `${tileSize}px`;
+                    tileElement.style.left = `${centerX + (tile.x * tileSize) + this.panX}px`;
+                    tileElement.style.top = `${centerY + (tile.y * tileSize) + this.panY}px`;
+                    tileElement.style.fontSize = `${Math.max(8, 12 * this.zoom)}px`;
+                    tileElement.title = `${tile.name} (${tile.x}, ${tile.y})`;
+                    
+                    if (tile.special) {
+                        tileElement.style.border = '3px solid #402C39';
+                        tileElement.style.boxShadow = '0 0 15px rgba(252, 229, 195, 0.8)';
+                    }
+                    
+                    if (this.showBiomes) {
+                        tileElement.innerHTML = `<div style="text-align: center; padding: 5px;">
+                            <div style="font-size: 0.8em; font-weight: bold;">${tile.name}</div>
+                            <div style="font-size: 0.6em; opacity: 0.8;">${tile.special ? 'Point de départ' : tile.biome}</div>
+                        </div>`;
+                    } else {
+                        tileElement.innerHTML = `<div style="text-align: center; padding: 5px;">
+                            <div style="font-size: 0.8em; font-weight: bold;">${tile.name}</div>
+                            <div style="font-size: 0.6em; opacity: 0.8;">(${tile.x}, ${tile.y})</div>
+                        </div>`;
+                    }
+                    
+                    this.canvas.appendChild(tileElement);
+                });
+            }
+            
+            zoomIn() {
+                this.zoom = Math.min(this.zoom * 1.2, 3);
+                this.renderMap();
+            }
+            
+            zoomOut() {
+                this.zoom = Math.max(this.zoom / 1.2, 0.1);
+                this.renderMap();
+            }
+            
+            resetView() {
+                this.zoom = 1;
+                this.panX = 0;
+                this.panY = 0;
+                this.renderMap();
+            }
+            
+            toggleBiomes() {
+                this.showBiomes = !this.showBiomes;
+                this.renderMap();
+            }
+            
+            startDrag(e) {
+                this.isDragging = true;
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+            }
+            
+            drag(e) {
+                if (!this.isDragging) return;
+                
+                const deltaX = e.clientX - this.lastMouseX;
+                const deltaY = e.clientY - this.lastMouseY;
+                
+                this.panX += deltaX;
+                this.panY += deltaY;
+                
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+                
+                this.renderMap();
+            }
+            
+            endDrag() {
+                this.isDragging = false;
+            }
+            
+            handleWheel(e) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                this.zoom = Math.max(0.1, Math.min(3, this.zoom * delta));
+                this.renderMap();
+            }
+        }
+        
+        // Initialiser la carte
+        document.addEventListener('DOMContentLoaded', () => {
+            new DemoMapRenderer();
+        });
+    </script>
+</body>
+</html>

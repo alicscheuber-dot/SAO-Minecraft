@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Carte du Monde</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <div class="map-container">
+        <div class="map-header">
+            <h1 class="map-title">CARTE DU MONDE SAO MINECRAFT</h1>
+            <div class="map-controls">
+                <button id="zoomIn" class="control-btn">+</button>
+                <button id="zoomOut" class="control-btn">-</button>
+                <button id="resetView" class="control-btn">⌂</button>
+                <button id="toggleDayNight" class="control-btn">🌙</button>
+                <button id="loadFullMap" class="control-btn">🗺️</button>
+            </div>
+        </div>
+        
+        <div class="map-wrapper">
+            <div id="mapCanvas" class="map-canvas">
+                <!-- La carte sera générée dynamiquement ici -->
+            </div>
+        </div>
+        
+        <div class="map-info">
+            <p>Utilisez la molette de la souris pour zoomer • Cliquez et glissez pour naviguer</p>
+            <button class="back-button" onclick="window.location.href='locations.html'">← Retour aux lieux</button>
+        </div>
+    </div>
+    
+    <script src="map.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Ressources</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ressources.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item active" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="menu.html" class="nav-back-icon" title="Retour au menu"></a>
+    <div class="ressources-container">
+        <h1 class="ressources-title">RESSOURCES</h1>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher une ressource..." autocomplete="off">
+                <div class="search-icon">🔍</div>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <div class="ressources-grid" id="ressourcesGrid">
+            <div class="ressource-card" onclick="window.location.href='item_cuir_use.html'">
+                <div class="ressource-icon">🧳</div>
+                <h3>Cuir Usé</h3>
+                <p>Matériau obtenu des bandits</p>
+            </div>
+            
+            <div class="ressource-card">
+                <div class="ressource-icon">💰</div>
+                <h3>Petite Bourse</h3>
+                <p>Contient de l'argent</p>
+            </div>
+            
+            <div class="ressource-card" onclick="window.location.href='item_gelee_slime.html'">
+                <div class="ressource-icon">📦</div>
+                <h3>Gelée de Slime</h3>
+                <p>Matériau gélatineux des slimes</p>
+            </div>
+            
+            <div class="ressource-card ressource-rare" onclick="window.location.href='item_noyau_slime.html'">
+                <div class="ressource-icon">💎</div>
+                <h3>Noyau de Slime</h3>
+                <p>Ressource rare des slimes</p>
+            </div>
+            
+            <div class="ressource-card" onclick="window.location.href='item_lingot_cuivre.html'">
+                <div class="ressource-icon">🟫</div>
+                <h3>Lingot de Cuivre</h3>
+                <p>Matériau raffiné pour la forge</p>
+            </div>
+            
+            <div class="ressource-card" onclick="window.location.href='item_peau_sanglier.html'">
+                <div class="ressource-icon">🐗</div>
+                <h3>Peau de Sanglier</h3>
+                <p>Matériau de base pour la tannerie</p>
+            </div>
+            
+            <div class="ressource-card" onclick="window.location.href='item_carapace_ika.html'">
+                <div class="ressource-icon">🛡️</div>
+                <h3>Carapace d'Ika</h3>
+                <p>Carapace ancienne de la tortue Ika</p>
+            </div>
+        </div>
+        
+        <button class="back-button" onclick="window.location.href='menu.html'">← Retour au menu principal</button>
+    </div>
+    
+    <script src="ressources.js"></script>
+</body>
+</html>

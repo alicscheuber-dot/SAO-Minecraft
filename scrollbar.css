@@ -1,0 +1,73 @@
+/* Scrollbar personnalisée pour toutes les pages */
+
+/* Pour les navigateurs basés sur WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #FCE5C3 0%, #402C39 100%);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #402C39 0%, #5a3d4f 100%);
+    border-radius: 10px;
+    border: 2px solid #FCE5C3;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5a3d4f 0%, #402C39 100%);
+    border-color: #F7B596;
+    box-shadow: 0 0 10px rgba(252, 229, 195, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #402C39 0%, #2a1d27 100%);
+}
+
+/* Pour Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #402C39 #FCE5C3;
+}
+
+/* Assurer que le body peut scroller */
+html, body {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Smooth scrolling pour toutes les pages */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animation de la scrollbar */
+@keyframes scrollbarGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(252, 229, 195, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(252, 229, 195, 0.6);
+    }
+}
+
+/* Responsive scrollbar */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-width: 1px;
+    }
+}

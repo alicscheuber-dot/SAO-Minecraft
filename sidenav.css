@@ -1,0 +1,199 @@
+/* Barre de navigation verticale sur la gauche */
+.sidenav {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    background: linear-gradient(180deg, #402C39 0%, #5a3d4f 50%, #402C39 100%);
+    border-radius: 0 20px 20px 0;
+    box-shadow: 4px 0 15px rgba(64, 44, 57, 0.5);
+    z-index: 999;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: slideInFromLeft 0.5s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%) translateY(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(-50%);
+    }
+}
+
+.sidenav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    color: #FCE5C3;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+}
+
+.sidenav-item:hover {
+    background: rgba(252, 229, 195, 0.1);
+    border-left-color: #FCE5C3;
+    transform: translateX(5px);
+}
+
+.sidenav-item.active {
+    background: rgba(252, 229, 195, 0.2);
+    border-left-color: #F7B596;
+}
+
+.sidenav-icon {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+.sidenav-text {
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Effet de brillance au hover */
+.sidenav-item:hover .sidenav-icon {
+    filter: drop-shadow(0 0 5px rgba(252, 229, 195, 0.8));
+    animation: iconGlow 0.5s ease-in-out;
+}
+
+@keyframes iconGlow {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .sidenav {
+        width: 70px;
+    }
+    
+    .sidenav-icon {
+        font-size: 1.8rem;
+    }
+    
+    .sidenav-text {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidenav {
+        width: 60px;
+        padding: 0.8rem 0;
+        gap: 0.3rem;
+    }
+    
+    .sidenav-item {
+        padding: 0.8rem 0.3rem;
+    }
+    
+    .sidenav-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .sidenav-text {
+        font-size: 0.55rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidenav {
+        width: 50px;
+        padding: 0.5rem 0;
+        gap: 0.2rem;
+    }
+    
+    .sidenav-item {
+        padding: 0.6rem 0.2rem;
+    }
+    
+    .sidenav-icon {
+        font-size: 1.3rem;
+        margin-bottom: 0.1rem;
+    }
+    
+    .sidenav-text {
+        font-size: 0.5rem;
+    }
+}
+
+/* Ajustement du contenu pour ne pas être masqué par la sidenav */
+body {
+    padding-left: 0;
+}
+
+/* Pour les conteneurs principaux */
+.menu-container,
+.locations-container,
+.mobs-container,
+.ressources-container,
+.items-container,
+.quetes-container,
+.quete-container,
+.ville-depart-container,
+.location-container,
+.npc-container,
+.quete-detail-container,
+.item-detail-container,
+.item-craft-container,
+.mob-detail-container {
+    padding-left: 2rem;
+}
+
+@media (max-width: 768px) {
+    .menu-container,
+    .locations-container,
+    .mobs-container,
+    .ressources-container,
+    .items-container,
+    .quetes-container,
+    .quete-container,
+    .ville-depart-container,
+    .location-container,
+    .npc-container,
+    .quete-detail-container,
+    .item-detail-container,
+    .item-craft-container,
+    .mob-detail-container {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-container,
+    .locations-container,
+    .mobs-container,
+    .ressources-container,
+    .items-container,
+    .quetes-container,
+    .quete-container,
+    .ville-depart-container,
+    .location-container,
+    .npc-container,
+    .quete-detail-container,
+    .item-detail-container,
+    .item-craft-container,
+    .mob-detail-container {
+        padding-left: 1rem;
+    }
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Carte du Monde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FCE5C3 0%, #402C39 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .map-container {
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .map-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #402C39;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+
+        .map-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: #402C39;
+            color: #FCE5C3;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: #FCE5C3;
+            color: #402C39;
+            transform: scale(1.1);
+        }
+
+        .map-wrapper {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            background: #2a2a2a;
+            border-radius: 10px;
+            min-height: 500px;
+        }
+
+        .map-canvas:active {
+            cursor: grabbing;
+        }
+
+        .map-tile {
+            position: absolute;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: opacity 0.3s ease;
+        }
+
+        .map-tile:hover {
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        .map-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: #402C39;
+        }
+
+        .map-info p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .back-button {
+            padding: 0.8rem 1.5rem;
+            background: #402C39;
+            color: #FCE5C3;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+        }
+
+        .back-button:hover {
+            background: #FCE5C3;
+            color: #402C39;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(64, 44, 57, 0.4);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FCE5C3;
+            font-size: 1.5rem;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            text-align: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .test-tile {
+            width: 100px;
+            height: 100px;
+            background: #444;
+            border: 2px solid #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <div class="map-header">
+            <h1 class="map-title">CARTE DU MONDE SAO MINECRAFT</h1>
+            <div class="map-controls">
+                <button id="zoomIn" class="control-btn">+</button>
+                <button id="zoomOut" class="control-btn">-</button>
+                <button id="resetView" class="control-btn">⌂</button>
+                <button id="testLoad" class="control-btn">🧪</button>
+            </div>
+        </div>
+        
+        <div class="map-wrapper">
+            <div id="mapCanvas" class="map-canvas">
+                <div class="loading">
+                    <div style="margin-bottom: 1rem;">🗺️</div>
+                    <div>Chargement de la carte...</div>
+                    <div style="font-size: 0.8rem; margin-top: 0.5rem;">Test de chargement des images</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-info">
+            <p>Utilisez la molette de la souris pour zoomer • Cliquez et glissez pour naviguer</p>
+            <button class="back-button" onclick="window.location.href='locations.html'">← Retour aux lieux</button>
+        </div>
+    </div>
+    
+    <script>
+        class SimpleMapRenderer {
+            constructor() {
+                this.canvas = document.getElementById('mapCanvas');
+                this.zoom = 1;
+                this.panX = 0;
+                this.panY = 0;
+                this.isDragging = false;
+                this.lastMouseX = 0;
+                this.lastMouseY = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.testImageLoading();
+            }
+            
+            setupEventListeners() {
+                document.getElementById('zoomIn').addEventListener('click', () => this.zoomIn());
+                document.getElementById('zoomOut').addEventListener('click', () => this.zoomOut());
+                document.getElementById('resetView').addEventListener('click', () => this.resetView());
+                document.getElementById('testLoad').addEventListener('click', () => this.testImageLoading());
+                
+                this.canvas.addEventListener('mousedown', (e) => this.startDrag(e));
+                this.canvas.addEventListener('mousemove', (e) => this.drag(e));
+                this.canvas.addEventListener('mouseup', () => this.endDrag());
+                this.canvas.addEventListener('mouseleave', () => this.endDrag());
+                this.canvas.addEventListener('wheel', (e) => this.handleWheel(e));
+            }
+            
+            testImageLoading() {
+                this.canvas.innerHTML = '<div class="loading"><div style="margin-bottom: 1rem;">🧪</div><div>Test de chargement des images...</div></div>';
+                
+                // Test avec quelques images spécifiques
+                const testImages = [
+                    'journeymap/data/mp/Triggers/overworld/day/-1,-1.png',
+                    'journeymap/data/mp/Triggers/overworld/day/0,0.png',
+                    'journeymap/data/mp/Triggers/overworld/day/1,1.png',
+                    'journeymap/data/mp/Triggers/overworld/day/2,2.png'
+                ];
+                
+                let loadedCount = 0;
+                let errorCount = 0;
+                
+                const results = [];
+                
+                testImages.forEach((src, index) => {
+                    const img = new Image();
+                    img.onload = function() {
+                        loadedCount++;
+                        results.push({src, status: 'success', index});
+                        console.log(`✅ Image ${index + 1} chargée: ${src}`);
+                        updateDisplay();
+                    };
+                    img.onerror = function() {
+                        errorCount++;
+                        results.push({src, status: 'error', index});
+                        console.log(`❌ Erreur image ${index + 1}: ${src}`);
+                        updateDisplay();
+                    };
+                    img.src = src;
+                });
+                
+                const updateDisplay = () => {
+                    if (loadedCount + errorCount === testImages.length) {
+                        this.displayTestResults(results, loadedCount, errorCount);
+                    }
+                };
+            }
+            
+            displayTestResults(results, loadedCount, errorCount) {
+                let html = '<div class="test-grid">';
+                
+                results.forEach((result, index) => {
+                    html += `<div class="test-tile" style="background: ${result.status === 'success' ? '#4CAF50' : '#f44336'};">
+                        <div>
+                            <div>Test ${index + 1}</div>
+                            <div style="font-size: 0.6rem; margin-top: 5px;">${result.status === 'success' ? '✅ OK' : '❌ Erreur'}</div>
+                        </div>
+                    </div>`;
+                });
+                
+                html += '</div>';
+                
+                html += `<div style="text-align: center; margin-top: 20px; color: #FCE5C3;">
+                    <h3>Résultats du test</h3>
+                    <p>Images chargées: ${loadedCount}/${results.length}</p>
+                    <p>Erreurs: ${errorCount}</p>
+                    ${errorCount > 0 ? '<p style="color: #ff6b6b;">Le problème vient du chemin des fichiers ou des restrictions du navigateur.</p>' : '<p style="color: #4CAF50;">Les images se chargent correctement !</p>'}
+                </div>`;
+                
+                this.canvas.innerHTML = html;
+            }
+            
+            zoomIn() {
+                this.zoom = Math.min(this.zoom * 1.2, 3);
+                console.log('Zoom in:', this.zoom);
+            }
+            
+            zoomOut() {
+                this.zoom = Math.max(this.zoom / 1.2, 0.1);
+                console.log('Zoom out:', this.zoom);
+            }
+            
+            resetView() {
+                this.zoom = 1;
+                this.panX = 0;
+                this.panY = 0;
+                console.log('Reset view');
+            }
+            
+            startDrag(e) {
+                this.isDragging = true;
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+            }
+            
+            drag(e) {
+                if (!this.isDragging) return;
+                
+                const deltaX = e.clientX - this.lastMouseX;
+                const deltaY = e.clientY - this.lastMouseY;
+                
+                this.panX += deltaX;
+                this.panY += deltaY;
+                
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+            }
+            
+            endDrag() {
+                this.isDragging = false;
+            }
+            
+            handleWheel(e) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                this.zoom = Math.max(0.1, Math.min(3, this.zoom * delta));
+                console.log('Wheel zoom:', this.zoom);
+            }
+        }
+        
+        // Initialiser la carte
+        document.addEventListener('DOMContentLoaded', () => {
+            new SimpleMapRenderer();
+        });
+    </script>
+</body>
+</html>

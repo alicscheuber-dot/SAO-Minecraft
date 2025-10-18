@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Lieux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="locations.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item active" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-back-icon" title="Retour au menu"></a>
+    <div class="locations-container">
+        <h1 class="locations-title">LIEUX DE SAO MINECRAFT</h1>
+        <div class="locations-grid">
+            <div class="location-card special-location" data-location="ville-depart" onclick="window.location.href='ville_depart.html'">
+                <h3>Ville du Départ</h3>
+            </div>
+            <div class="location-card location-hanaka" data-location="hanaka" onclick="window.location.href='hanaka.html'">
+                <h3>Hanaka</h3>
+            </div>
+            <div class="location-card location-vallet-loups" data-location="vallet-loups" onclick="window.location.href='vallet_loups.html'">
+                <h3>Vallet des Loups</h3>
+            </div>
+            <div class="location-card location-marecage-putride" data-location="marecage-putride" onclick="window.location.href='marecage_putride.html'">
+                <h3>Marécage Putride</h3>
+            </div>
+            <div class="location-card location-zonne-sanglier" data-location="zonne-sanglier" onclick="window.location.href='zonne_sanglier.html'">
+                <h3>Zonne Sanglier</h3>
+            </div>
+            <div class="location-card location-vallee-petalles" data-location="vallee-petalles" onclick="window.location.href='vallee_petalles.html'">
+                <h3>Vallée des Pétalles</h3>
+            </div>
+            <div class="location-card location-mizunari" data-location="mizunari" onclick="window.location.href='mizunari.html'">
+                <h3>Mizunari</h3>
+            </div>
+            <div class="location-card" data-location="archipel-ika">
+                <h3>Archipel d'Ika</h3>
+            </div>
+            <div class="location-card" data-location="quartier-og">
+                <h3>Quartier OG</h3>
+            </div>
+            <div class="location-card" data-location="cyclorim">
+                <h3>Cyclorim</h3>
+            </div>
+            <div class="location-card" data-location="castel-brume">
+                <h3>Castel Brume</h3>
+            </div>
+            <div class="location-card" data-location="vallhat">
+                <h3>Vallhat</h3>
+            </div>
+            <div class="location-card" data-location="jardin-geants">
+                <h3>Jardin des Géants</h3>
+            </div>
+        </div>
+        <div class="map-card" onclick="window.location.href='map.html'">
+            <h3>🗺️ MAP</h3>
+        </div>
+    </div>
+</body>
+</html>

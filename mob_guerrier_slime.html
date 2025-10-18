@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Guerrier Slime</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mob_detail.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item active" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="mobs.html" class="nav-back-icon" title="Retour aux mobs"></a>
+    <div class="mob-detail-container">
+        <div class="mob-header">
+            <div class="mob-icon-large">⚔️</div>
+            <h1 class="mob-detail-title">GUERRIER SLIME</h1>
+        </div>
+        
+        <div class="mob-info-card">
+            <div class="info-section description-section">
+                <div class="info-label">📖 Description :</div>
+                <div class="description-text">
+                    <p>Né d'un amas magique de gelée ancienne, il a appris à manier l'arme comme un vrai guerrier. Il défend son territoire avec une rage inattendue.</p>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">💎 Butin :</div>
+                <div class="loot-list">
+                    <div class="loot-item">
+                        <div class="loot-info">
+                            <span class="loot-icon">💧</span>
+                            <span class="loot-name mob-clickable" onclick="window.location.href='item_gelee_slime.html'">Gelée de Slime</span>
+                        </div>
+                        <div class="drop-chance">
+                            <div class="drop-bar">
+                                <div class="drop-fill" style="width: 30%;">30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">📍 Lieu :</div>
+                <div class="locations-list">
+                    <div class="location-item location-marecage">
+                        <span class="location-icon">🗺️</span>
+                        <span class="location-name">Marécage de Vallhat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

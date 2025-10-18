@@ -1,0 +1,423 @@
+.item-craft-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F7B596 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.item-icon-large {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.item-craft-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #402C39;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.item-craft-card {
+    background: rgba(252, 229, 195, 0.95);
+    border: 3px solid #402C39;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 
+        0 8px 25px rgba(64, 44, 57, 0.3),
+        0 0 20px rgba(247, 181, 150, 0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #402C39;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Section description */
+.description-section {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.description-text {
+    font-size: 1.2rem;
+    color: #402C39;
+    line-height: 1.8;
+    font-style: italic;
+    text-align: justify;
+}
+
+.description-text p {
+    margin: 0;
+}
+
+/* Section catégorie */
+.category-section {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+    text-align: center;
+}
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+    color: #FCE5C3;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+}
+
+.category-icon {
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+}
+
+/* Stats de craft */
+.craft-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    border-color: #402C39;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+}
+
+.stat-health {
+    border-color: #E74C3C;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(255, 255, 255, 0.6));
+}
+
+.stat-health:hover {
+    border-color: #E74C3C;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #402C39;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: #402C39;
+    font-weight: bold;
+}
+
+/* Ingrédients */
+.ingredients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ingredient-item:hover {
+    transform: translateX(5px);
+    border-color: #402C39;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+}
+
+.ingredient-clickable {
+    cursor: pointer;
+}
+
+.ingredient-clickable:hover {
+    background: linear-gradient(135deg, rgba(247, 181, 150, 0.4), rgba(255, 255, 255, 0.9));
+    border-color: #F7B596;
+}
+
+.ingredient-clickable .ingredient-name {
+    color: #5E891B;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.ingredient-clickable:hover .ingredient-name {
+    text-decoration: underline;
+    color: #402C39;
+}
+
+.ingredient-icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.ingredient-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ingredient-name {
+    font-size: 1.3rem;
+    color: #402C39;
+    font-weight: 500;
+}
+
+.ingredient-quantity {
+    font-size: 1.5rem;
+    color: #402C39;
+    font-weight: bold;
+    background: linear-gradient(135deg, #F7B596, #FCE5C3);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    border: 2px solid #402C39;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .item-icon-large {
+        font-size: 4rem;
+    }
+    
+    .item-craft-title {
+        font-size: 2rem;
+    }
+    
+    .item-craft-card {
+        padding: 1.5rem;
+    }
+    
+    .info-label {
+        font-size: 1.2rem;
+    }
+    
+    .description-text {
+        font-size: 1rem;
+    }
+    
+    .craft-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+        min-width: 40px;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+    }
+    
+    .ingredient-name {
+        font-size: 1.1rem;
+    }
+    
+    .ingredient-quantity {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-craft-container {
+        padding: 1rem;
+    }
+    
+    .item-icon-large {
+        font-size: 3rem;
+    }
+    
+    .item-craft-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .item-craft-card {
+        padding: 1rem;
+    }
+    
+    .info-label {
+        font-size: 1rem;
+    }
+    
+    .description-section {
+        padding: 1rem;
+    }
+    
+    .description-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-icon {
+        font-size: 1.8rem;
+    }
+    
+    .stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .ingredient-item {
+        padding: 1rem;
+    }
+    
+    .ingredient-icon {
+        font-size: 2rem;
+    }
+    
+    .ingredient-name {
+        font-size: 1rem;
+    }
+    
+    .ingredient-quantity {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* Section bonus de set */
+.set-bonus-section {
+    background: linear-gradient(135deg, rgba(186, 172, 235, 0.3) 0%, rgba(238, 165, 158, 0.3) 100%);
+    border: 2px solid rgba(186, 172, 235, 0.5);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.set-bonus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bonus-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(252, 229, 195, 0.8);
+    border-radius: 10px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+    transition: all 0.3s ease;
+}
+
+.bonus-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(186, 172, 235, 0.4);
+}
+
+.bonus-icon {
+    font-size: 2rem;
+}
+
+.bonus-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #402C39;
+}

@@ -1,0 +1,432 @@
+.mob-detail-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F7B596 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mob-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.mob-icon-large {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.mob-detail-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #402C39;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mob-info-card {
+    background: rgba(252, 229, 195, 0.95);
+    border: 3px solid #402C39;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 
+        0 8px 25px rgba(64, 44, 57, 0.3),
+        0 0 20px rgba(247, 181, 150, 0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #402C39;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Section description */
+.description-section {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.description-text {
+    font-size: 1.2rem;
+    color: #402C39;
+    line-height: 1.8;
+    font-style: italic;
+    text-align: justify;
+}
+
+.description-text p {
+    margin: 0;
+}
+
+/* Section butin */
+.loot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.loot-item {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.3);
+    transition: all 0.3s ease;
+}
+
+.loot-item:hover {
+    transform: translateX(5px);
+    border-color: #402C39;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+}
+
+.loot-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.loot-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.loot-name {
+    font-size: 1.4rem;
+    color: #5E891B;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.loot-name:hover {
+    color: #402C39;
+    border-bottom-color: #5E891B;
+    text-shadow: 0 0 5px rgba(94, 137, 27, 0.3);
+}
+
+.loot-rare {
+    color: #9B59B6 !important;
+    text-decoration: none !important;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.loot-rare:hover {
+    color: #C39BD3 !important;
+    border-bottom-color: #9B59B6 !important;
+    text-shadow: 0 0 5px rgba(155, 89, 182, 0.5) !important;
+    cursor: pointer;
+}
+
+.drop-rare {
+    background: linear-gradient(90deg, #9B59B6 0%, #C39BD3 100%) !important;
+}
+
+.drop-guaranteed {
+    background: linear-gradient(90deg, #27AE60 0%, #2ECC71 100%) !important;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles pour les lieux */
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FCE5C3 0%, #5E891B 50%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 3px solid #402C39;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.location-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(64, 44, 57, 0.3);
+}
+
+.location-citadelle {
+    background: linear-gradient(135deg, #FCE5C3 0%, #C0392B 50%) !important;
+    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4) !important;
+}
+
+.location-citadelle:hover {
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.5) !important;
+}
+
+.location-marecage {
+    background: linear-gradient(135deg, #FCE5C3 0%, #5E891B 50%) !important;
+    box-shadow: 0 4px 15px rgba(94, 137, 27, 0.4) !important;
+}
+
+.location-marecage:hover {
+    box-shadow: 0 6px 20px rgba(94, 137, 27, 0.5) !important;
+}
+
+.location-zonne-sanglier {
+    background: linear-gradient(135deg, #FCE5C3 0%, #283B0A 50%) !important;
+    box-shadow: 0 4px 15px rgba(40, 59, 10, 0.4) !important;
+}
+
+.location-zonne-sanglier:hover {
+    box-shadow: 0 6px 20px rgba(40, 59, 10, 0.5) !important;
+}
+
+.location-vallet-loups {
+    background: linear-gradient(135deg, #FCE5C3 0%, #626C8B 50%) !important;
+    box-shadow: 0 4px 15px rgba(98, 108, 139, 0.4) !important;
+}
+
+.location-vallet-loups:hover {
+    box-shadow: 0 6px 20px rgba(98, 108, 139, 0.5) !important;
+}
+
+.location-ruine {
+    background: linear-gradient(135deg, #FCE5C3 0%, #3d3d3d 50%) !important;
+    box-shadow: 0 4px 15px rgba(61, 61, 61, 0.4) !important;
+}
+
+.location-ruine:hover {
+    box-shadow: 0 6px 20px rgba(61, 61, 61, 0.5) !important;
+}
+
+.location-archipel {
+    background: linear-gradient(135deg, #FCE5C3 0%, #4A90E2 50%) !important;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4) !important;
+}
+
+.location-archipel:hover {
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5) !important;
+}
+
+.location-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.location-name {
+    font-size: 1.4rem;
+    color: #402C39;
+    font-weight: bold;
+}
+
+.drop-chance {
+    width: 100%;
+    position: relative;
+}
+
+.drop-percentage-text {
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #402C39;
+    margin-bottom: 0.3rem;
+}
+
+.drop-bar {
+    width: 100%;
+    height: 30px;
+    background: rgba(64, 44, 57, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.drop-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5E891B 0%, #7AB51D 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: width 0.5s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Boutons de navigation */
+.navigation-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.back-button {
+    padding: 1rem 2rem;
+    background: #402C39;
+    color: #FCE5C3;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+}
+
+.back-button:hover {
+    background: #FCE5C3;
+    color: #402C39;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(64, 44, 57, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .mob-icon-large {
+        font-size: 4rem;
+    }
+    
+    .mob-detail-title {
+        font-size: 2rem;
+    }
+    
+    .mob-info-card {
+        padding: 1.5rem;
+    }
+    
+    .info-label {
+        font-size: 1.2rem;
+    }
+    
+    .description-text {
+        font-size: 1rem;
+    }
+    
+    .loot-name {
+        font-size: 1.2rem;
+    }
+    
+    .drop-bar {
+        height: 25px;
+    }
+    
+    .drop-fill {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mob-detail-container {
+        padding: 1rem;
+    }
+    
+    .mob-icon-large {
+        font-size: 3rem;
+    }
+    
+    .mob-detail-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .mob-info-card {
+        padding: 1rem;
+    }
+    
+    .info-label {
+        font-size: 1rem;
+    }
+    
+    .description-section {
+        padding: 1rem;
+    }
+    
+    .description-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .loot-item {
+        padding: 1rem;
+    }
+    
+    .loot-icon {
+        font-size: 1.5rem;
+    }
+    
+    .loot-name {
+        font-size: 1rem;
+    }
+    
+    .drop-bar {
+        height: 20px;
+    }
+    
+    .drop-fill {
+        font-size: 0.7rem;
+    }
+}

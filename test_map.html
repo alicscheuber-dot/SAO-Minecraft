@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Carte SAO</title>
+    <style>
+        body {
+            background: #2a2a2a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-image {
+            border: 2px solid #fff;
+            margin: 10px;
+            display: inline-block;
+        }
+        .debug {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test de chargement des images de carte</h1>
+        <div id="debug" class="debug">Chargement en cours...</div>
+        <div id="images"></div>
+    </div>
+
+    <script>
+        const debug = document.getElementById('debug');
+        const imagesContainer = document.getElementById('images');
+        
+        function log(message) {
+            debug.innerHTML += message + '<br>';
+            console.log(message);
+        }
+        
+        // Test de quelques images spécifiques
+        const testImages = [
+            'journeymap/data/mp/Triggers/overworld/day/-1,-1.png',
+            'journeymap/data/mp/Triggers/overworld/day/0,0.png',
+            'journeymap/data/mp/Triggers/overworld/day/1,1.png',
+            'journeymap/data/mp/Triggers/overworld/day/2,2.png'
+        ];
+        
+        let loadedCount = 0;
+        
+        testImages.forEach((src, index) => {
+            log(`Test ${index + 1}: Tentative de chargement de ${src}`);
+            
+            const img = new Image();
+            img.onload = function() {
+                loadedCount++;
+                log(`✅ Image ${index + 1} chargée avec succès: ${src}`);
+                
+                const div = document.createElement('div');
+                div.className = 'test-image';
+                div.innerHTML = `
+                    <div>${src}</div>
+                    <img src="${src}" style="width: 200px; height: 200px; object-fit: cover;">
+                `;
+                imagesContainer.appendChild(div);
+            };
+            
+            img.onerror = function() {
+                log(`❌ Erreur de chargement pour ${src}`);
+            };
+            
+            img.src = src;
+        });
+        
+        // Vérifier après 3 secondes
+        setTimeout(() => {
+            log(`<br>Résultat final: ${loadedCount}/${testImages.length} images chargées`);
+            if (loadedCount === 0) {
+                log('❌ Aucune image chargée. Vérifiez le chemin des fichiers.');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

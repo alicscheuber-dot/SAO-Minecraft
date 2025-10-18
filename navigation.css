@@ -1,0 +1,157 @@
+/* Icône de navigation globale */
+.nav-home-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+    border: 3px solid #FCE5C3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.5);
+    z-index: 1000;
+    text-decoration: none;
+    color: #FCE5C3;
+}
+
+.nav-home-icon:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 
+        0 6px 20px rgba(64, 44, 57, 0.6),
+        0 0 20px rgba(252, 229, 195, 0.5);
+    background: linear-gradient(135deg, #5a3d4f 0%, #402C39 100%);
+}
+
+.nav-home-icon::after {
+    content: '🏠';
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 2px rgba(252, 229, 195, 0.5));
+}
+
+/* Animation d'apparition */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-home-icon {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+/* Icône de retour en haut à droite */
+.nav-back-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+    border: 3px solid #FCE5C3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.5);
+    z-index: 1000;
+    text-decoration: none;
+    color: #FCE5C3;
+}
+
+.nav-back-icon:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 
+        0 6px 20px rgba(64, 44, 57, 0.6),
+        0 0 20px rgba(252, 229, 195, 0.5);
+    background: linear-gradient(135deg, #5a3d4f 0%, #402C39 100%);
+}
+
+.nav-back-icon::after {
+    content: '←';
+    font-size: 1.8rem;
+    font-weight: bold;
+    filter: drop-shadow(0 0 2px rgba(252, 229, 195, 0.5));
+}
+
+/* Animation d'apparition pour l'icône retour */
+.nav-back-icon {
+    animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-home-icon {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        left: 15px;
+        font-size: 1.3rem;
+    }
+    
+    .nav-home-icon::after {
+        font-size: 1.3rem;
+    }
+    
+    .nav-back-icon {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        right: 15px;
+        font-size: 1.3rem;
+    }
+    
+    .nav-back-icon::after {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-home-icon {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-home-icon::after {
+        font-size: 1.2rem;
+    }
+    
+    .nav-back-icon {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-back-icon::after {
+        font-size: 1.4rem;
+    }
+}
