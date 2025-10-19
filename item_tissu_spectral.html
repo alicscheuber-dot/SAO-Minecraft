@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Viande de Sanglier</title>
+    <title>SAO Minecraft - Tissu Spectral</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_food.css">
+    <link rel="stylesheet" href="item_detail.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -61,60 +61,34 @@
             localStorage.removeItem('fromMarchand');
         }
     </script>
-    <div class="food-container">
-        <div class="food-header">
-            <div class="food-icon-large">🍖</div>
-            <h1 class="food-title">VIANDE DE SANGLIER</h1>
-        </div>
+    <div class="item-detail-container">
+        <h1 class="item-detail-title">TISSU SPECTRAL</h1>
         
-        <div class="food-info-card">
+        <div class="item-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Cette belle viande de sanglier, bien juteuse, peut vous donner encore plus envie de manger !</p>
+                    <p>Un tissu imprégné de magie noire et de malédictions.</p>
                 </div>
             </div>
             
-            <div class="food-stats">
-                <div class="stat-card hunger-stat">
-                    <div class="stat-icon">🍗</div>
-                    <div class="stat-info">
-                        <div class="stat-label">Restaure</div>
-                        <div class="stat-value">10 Nourriture</div>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">⏱️</div>
-                    <div class="stat-info">
-                        <div class="stat-label">Cooldown</div>
-                        <div class="stat-value">1s</div>
-                    </div>
+            <div class="info-section category-section">
+                <div class="category-badge">
+                    <span class="category-icon">📂</span>
+                    <span>Catégorie : Matériau Rare</span>
                 </div>
             </div>
             
             <div class="info-section">
-                <div class="info-label">📦 Source :</div>
+                <div class="info-label">📦 Mobs :</div>
                 <div class="mobs-list">
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_sanglier_corrompue.html'">
-                        <span class="mob-icon">🐗</span>
+                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_mage_sylvestre.html'">
+                        <span class="mob-icon">🧙</span>
                         <div class="mob-info">
-                            <span class="mob-name">Sanglier Corrompue</span>
+                            <span class="mob-name">Mage Sylvestre</span>
                             <div class="drop-chance">
                                 <div class="drop-bar">
-                                    <div class="drop-fill" style="width: 65%;">65%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_pumba.html'">
-                        <span class="mob-icon">🐷</span>
-                        <div class="mob-info">
-                            <span class="mob-name">Pumba</span>
-                            <div class="drop-chance">
-                                <div class="drop-bar">
-                                    <div class="drop-fill" style="width: 65%;">65%</div>
+                                    <div class="drop-fill" style="width: 30%;">30%</div>
                                 </div>
                             </div>
                         </div>
@@ -125,23 +99,10 @@
             <div class="info-section">
                 <div class="info-label">📍 Lieu :</div>
                 <div class="locations-list">
-                    <div class="location-item location-zonne-sanglier">
-                        <span class="location-icon">🗺️</span>
-                        <span class="location-name">Zonne Sanglier</span>
+                    <div class="location-item">
+                        <span class="location-icon">🌿</span>
+                        <span class="location-name">Marécage Putride</span>
                     </div>
-                </div>
-            </div>
-            
-            <div class="info-section source-section">
-                <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_marchand_depart.html'">
-                    <span class="source-icon">🏪</span>
-                    <span class="source-text">Marchand du Départ</span>
-                </div>
-                <div class="price-card">
-                    <span class="price-icon">💰</span>
-                    <span class="price-label">Prix d'achat :</span>
-                    <span class="price-value">0.05 Cols</span>
                 </div>
             </div>
         </div>

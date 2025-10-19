@@ -1,84 +1,123 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Marchand de Départ</title>
+    <title>SAO Minecraft - Marchand de DÃ©part</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="npc_marchand.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+    <div class="personal-footer">
+        <div class="footer-content">
+            <span class="discord-icon">ðŸ’¬</span>
+            <span class="discord-label">Discord:</span>
+            <span class="discord-username">yui028795</span>
+        </div>
+    </div>
     <nav class="sidenav">
         <a href="locations.html" class="sidenav-item active" title="Lieux">
-            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-icon">ðŸ—ºï¸</div>
             <div class="sidenav-text">Lieux</div>
         </a>
         <a href="mobs.html" class="sidenav-item" title="Mobs">
-            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-icon">ðŸ‘¹</div>
             <div class="sidenav-text">Mobs</div>
         </a>
         <a href="ressources.html" class="sidenav-item" title="Ressources">
-            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-icon">â›ï¸</div>
             <div class="sidenav-text">Ressources</div>
         </a>
         <a href="items.html" class="sidenav-item" title="Items">
-            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-icon">ðŸ“¦</div>
             <div class="sidenav-text">Items</div>
         </a>
-        <a href="quetes.html" class="sidenav-item" title="Quêtes">
-            <div class="sidenav-icon">📜</div>
-            <div class="sidenav-text">Quêtes</div>
+        <a href="quetes.html" class="sidenav-item" title="QuÃªtes">
+            <div class="sidenav-icon">ðŸ“œ</div>
+            <div class="sidenav-text">QuÃªtes</div>
+        </a>
+        <a href="npc.html" class="sidenav-item" title="NPC">
+            <div class="sidenav-icon">ðŸ‘¤</div>
+            <div class="sidenav-text">NPC</div>
+        </a>
+        <a href="carte_interactive.html" class="sidenav-item" title="Carte">
+            <div class="sidenav-icon">ðŸ—ºï¸</div>
+            <div class="sidenav-text">Carte</div>
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
     <a href="npc.html" class="nav-back-icon" title="Retour aux NPC"></a>
+    <script>
+        // Nettoyer le flag au chargement de la page
+        localStorage.removeItem('fromMarchand');
+        
+        // DÃ©finir le flag uniquement lors du clic sur un item
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemCards = document.querySelectorAll('.item-card');
+            itemCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    localStorage.setItem('fromMarchand', 'true');
+                });
+            });
+        });
+    </script>
     <div class="marchand-container">
-        <h1 class="marchand-title">MARCHAND DE DÉPART</h1>
-        <p class="marchand-subtitle">🏪 Vendeur d'équipements de base</p>
+        <h1 class="marchand-title">MARCHAND DE DÃ‰PART</h1>
+        <p class="marchand-subtitle">ðŸª Vendeur d'Ã©quipements de base</p>
+        
+        <div class="waypoint-section">
+            <div class="waypoint-label">ðŸ“ Localisation :</div>
+            <div class="waypoint-coords">
+                <span class="coord-item">X: 1788</span>
+                <span class="coord-separator">â€¢</span>
+                <span class="coord-item">Z: 4161</span>
+            </div>
+        </div>
         
         <div class="category-section">
-            <h2 class="category-title">📦 Matériaux</h2>
+            <h2 class="category-title">ðŸ“¦ MatÃ©riaux</h2>
             <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-icon">💰</div>
+                <div class="item-card" onclick="window.location.href='item_petite_bourse.html'">
+                    <div class="item-icon">ðŸ’°</div>
                     <h3>Petite Bourse</h3>
                     <p>Contient de l'argent</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🐗</div>
+                <div class="item-card" onclick="window.location.href='item_peau_sanglier.html'">
+                    <div class="item-icon">ðŸ—</div>
                     <h3>Peau de Sanglier</h3>
-                    <p>Matériau de tannerie</p>
+                    <p>MatÃ©riau de tannerie</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">💎</div>
+                <div class="item-card" onclick="window.location.href='item_cristal_corrompu.html'">
+                    <div class="item-icon">ðŸ’Ž</div>
                     <h3>Cristal Corrompu</h3>
-                    <p>Cristal à l'énergie sombre</p>
+                    <p>Cristal Ã  l'Ã©nergie sombre</p>
                 </div>
             </div>
         </div>
         
         <div class="category-section">
-            <h2 class="category-title">🧪 Consommables</h2>
+            <h2 class="category-title">ðŸ§ª Consommables</h2>
             <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-icon">🧪</div>
+                <div class="item-card" onclick="window.location.href='item_potion_mana_mineur.html'">
+                    <div class="item-icon">ðŸ§ª</div>
                     <h3>Potion de Mana Mineur</h3>
                     <p>Restaure un peu de mana</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🍖</div>
+                <div class="item-card" onclick="window.location.href='item_viande_sanglier.html'">
+                    <div class="item-icon">ðŸ–</div>
                     <h3>Viande de Sanglier</h3>
                     <p>Restaure 10 Nourriture</p>
                 </div>
                 
                 <div class="item-card" onclick="window.location.href='item_potion_vie_1.html'">
-                    <div class="item-icon">❤️</div>
+                    <div class="item-icon">â¤ï¸</div>
                     <h3>Potion de Vie 1</h3>
                     <p>Restaure des points de vie</p>
                 </div>
@@ -86,65 +125,65 @@
         </div>
         
         <div class="category-section">
-            <h2 class="category-title">📜 Parchemins</h2>
+            <h2 class="category-title">ðŸ“œ Parchemins</h2>
             <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-icon">📜</div>
-                    <h3>Parchemin de Réallocation</h3>
-                    <p>Réinitialise les compétences</p>
+                <div class="item-card" onclick="window.location.href='item_parchemin_reallocation.html'">
+                    <div class="item-icon">ðŸ“œ</div>
+                    <h3>Parchemin de RÃ©allocation</h3>
+                    <p>RÃ©initialise les compÃ©tences</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">📖</div>
-                    <h3>Parchemin de Maîtrise</h3>
-                    <p>Améliore les compétences</p>
+                <div class="item-card" onclick="window.location.href='item_parchemin_maitrise.html'">
+                    <div class="item-icon">ðŸ“–</div>
+                    <h3>Parchemin de MaÃ®trise</h3>
+                    <p>AmÃ©liore les compÃ©tences</p>
                 </div>
             </div>
         </div>
         
         <div class="category-section">
-            <h2 class="category-title">⚔️ Armes & Équipements</h2>
+            <h2 class="category-title">âš”ï¸ Armes & Ã‰quipements</h2>
             <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-icon">⚔️</div>
-                    <h3>Épée d'Entraînement</h3>
-                    <p>Arme de débutant</p>
+                <div class="item-card" onclick="window.location.href='item_epee_entrainement.html'">
+                    <div class="item-icon">âš”ï¸</div>
+                    <h3>Ã‰pÃ©e d'EntraÃ®nement</h3>
+                    <p>Arme de dÃ©butant</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🗡️</div>
-                    <h3>Dague Délabrée</h3>
-                    <p>Arme légère usée</p>
+                <div class="item-card" onclick="window.location.href='item_dague_delabree.html'">
+                    <div class="item-icon">ðŸ—¡ï¸</div>
+                    <h3>Dague DÃ©labrÃ©e</h3>
+                    <p>Arme lÃ©gÃ¨re usÃ©e</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🏹</div>
-                    <h3>Arc Courbé</h3>
+                <div class="item-card" onclick="window.location.href='item_arc_courbe.html'">
+                    <div class="item-icon">ðŸ¹</div>
+                    <h3>Arc CourbÃ©</h3>
                     <p>Arc de base pour archers</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🪄</div>
-                    <h3>Bâton Médiocre de Mage</h3>
-                    <p>Bâton basique pour mages</p>
+                <div class="item-card" onclick="window.location.href='item_baton_mage.html'">
+                    <div class="item-icon">ðŸª„</div>
+                    <h3>BÃ¢ton MÃ©diocre de Mage</h3>
+                    <p>BÃ¢ton basique pour mages</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🛡️</div>
+                <div class="item-card" onclick="window.location.href='item_bouclier_pacotille.html'">
+                    <div class="item-icon">ðŸ›¡ï¸</div>
                     <h3>Bouclier de Pacotille</h3>
-                    <p>Bouclier de faible qualité</p>
+                    <p>Bouclier de faible qualitÃ©</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">📚</div>
-                    <h3>Grimoire Délié</h3>
+                <div class="item-card" onclick="window.location.href='item_grimoire_delie.html'">
+                    <div class="item-icon">ðŸ“š</div>
+                    <h3>Grimoire DÃ©liÃ©</h3>
                     <p>Livre de sorts ancien</p>
                 </div>
                 
-                <div class="item-card">
-                    <div class="item-icon">🌿</div>
-                    <h3>Bâton Médiocre de Shaman</h3>
-                    <p>Bâton basique pour shamans</p>
+                <div class="item-card" onclick="window.location.href='item_baton_shaman.html'">
+                    <div class="item-icon">ðŸŒ¿</div>
+                    <h3>BÃ¢ton MÃ©diocre de Shaman</h3>
+                    <p>BÃ¢ton basique pour shamans</p>
                 </div>
             </div>
         </div>

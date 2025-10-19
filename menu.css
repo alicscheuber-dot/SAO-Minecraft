@@ -14,9 +14,72 @@
     color: #402C39;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.2em;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
     animation: fadeInDown 1s ease-out;
+}
+
+/* Section de recherche */
+.search-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out 0.2s both;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 3px solid #402C39;
+    border-radius: 25px;
+    background: rgba(252, 229, 195, 0.9);
+    color: #402C39;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #402C39;
+    opacity: 0.5;
+}
+
+.search-box input:focus {
+    background: rgba(252, 229, 195, 1);
+    box-shadow: 0 0 20px rgba(252, 229, 195, 0.8);
+    transform: scale(1.02);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #402C39;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.search-results {
+    margin-top: 1rem;
+    display: none;
+}
+
+.no-results {
+    text-align: center;
+    color: #402C39;
+    font-size: 1.1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    border: 2px solid #402C39;
 }
 
 @keyframes fadeInDown {
@@ -164,7 +227,22 @@
 @media (max-width: 768px) {
     .menu-title {
         font-size: 2.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-section {
+        max-width: 90%;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-box input {
+        font-size: 1rem;
+        padding: 0.9rem 2.8rem 0.9rem 1.2rem;
+    }
+    
+    .search-icon {
+        font-size: 1.3rem;
+        right: 1.2rem;
     }
     
     .menu-grid {
@@ -200,6 +278,26 @@
     .menu-title {
         font-size: 2rem;
         letter-spacing: 0.1em;
+    }
+    
+    .search-section {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .search-box input {
+        font-size: 0.95rem;
+        padding: 0.8rem 2.5rem 0.8rem 1rem;
+    }
+    
+    .search-icon {
+        font-size: 1.2rem;
+        right: 1rem;
+    }
+    
+    .no-results {
+        font-size: 1rem;
+        padding: 0.8rem;
     }
     
     .menu-card {

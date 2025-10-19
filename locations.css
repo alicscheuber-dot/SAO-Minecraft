@@ -161,13 +161,22 @@
         0 0 20px rgba(251, 206, 107, 0.5) !important;
 }
 
+.location-vallhat {
+    background: linear-gradient(135deg, #E0D7C7 0%, #98C3C7 100%) !important;
+    border: 3px solid #2C3E50 !important;
+    box-shadow: 
+        0 4px 15px rgba(44, 62, 80, 0.3),
+        0 0 20px rgba(152, 195, 199, 0.5) !important;
+}
+
 /* Effets de survol pour tous les lieux spéciaux */
 .location-hanaka:hover,
 .location-vallet-loups:hover,
 .location-marecage-putride:hover,
 .location-zonne-sanglier:hover,
 .location-vallee-petalles:hover,
-.location-mizunari:hover {
+.location-mizunari:hover,
+.location-vallhat:hover {
     transform: translateY(-10px) scale(1.05) !important;
     box-shadow: 
         0 8px 25px rgba(64, 44, 57, 0.4),
