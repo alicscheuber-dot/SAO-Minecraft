@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Potion de Vie 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="item_potion.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item active" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="items.html" class="nav-back-icon" title="Retour aux items"></a>
+    <div class="potion-container">
+        <div class="potion-header">
+            <div class="potion-icon-large">❤️</div>
+            <h1 class="potion-title">POTION DE VIE 1</h1>
+        </div>
+        
+        <div class="potion-info-card">
+            <div class="potion-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Level Min.</div>
+                        <div class="stat-value">1</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card healing-stat">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Restaure</div>
+                        <div class="stat-value">20 PV</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Cooldown</div>
+                        <div class="stat-value">15s</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section buffs-section">
+                <div class="info-label">✨ Buffs :</div>
+                <div class="buff-item">
+                    <div class="buff-name">HEALING</div>
+                    <div class="buff-description">
+                        <p>Vous rend des PV immédiatement et applique 15s de recharge sur toutes les potions de soin.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section source-section">
+                <div class="info-label">🏪 Obtention :</div>
+                <div class="source-card source-clickable" onclick="window.location.href='npc_marchand_depart.html'">
+                    <span class="source-icon">🏪</span>
+                    <span class="source-text">Marchand du Départ</span>
+                </div>
+                <div class="price-card">
+                    <span class="price-icon">💰</span>
+                    <span class="price-label">Prix :</span>
+                    <span class="price-value">15 Cols</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

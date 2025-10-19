@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Marchand de Départ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="npc_marchand.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+</head>
+<body>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item active" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="npc.html" class="nav-back-icon" title="Retour aux NPC"></a>
+    <div class="marchand-container">
+        <h1 class="marchand-title">MARCHAND DE DÉPART</h1>
+        <p class="marchand-subtitle">🏪 Vendeur d'équipements de base</p>
+        
+        <div class="category-section">
+            <h2 class="category-title">📦 Matériaux</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">💰</div>
+                    <h3>Petite Bourse</h3>
+                    <p>Contient de l'argent</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🐗</div>
+                    <h3>Peau de Sanglier</h3>
+                    <p>Matériau de tannerie</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">💎</div>
+                    <h3>Cristal Corrompu</h3>
+                    <p>Cristal à l'énergie sombre</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h2 class="category-title">🧪 Consommables</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">🧪</div>
+                    <h3>Potion de Mana Mineur</h3>
+                    <p>Restaure un peu de mana</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🍖</div>
+                    <h3>Viande de Sanglier</h3>
+                    <p>Restaure 10 Nourriture</p>
+                </div>
+                
+                <div class="item-card" onclick="window.location.href='item_potion_vie_1.html'">
+                    <div class="item-icon">❤️</div>
+                    <h3>Potion de Vie 1</h3>
+                    <p>Restaure des points de vie</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h2 class="category-title">📜 Parchemins</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">📜</div>
+                    <h3>Parchemin de Réallocation</h3>
+                    <p>Réinitialise les compétences</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">📖</div>
+                    <h3>Parchemin de Maîtrise</h3>
+                    <p>Améliore les compétences</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h2 class="category-title">⚔️ Armes & Équipements</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">⚔️</div>
+                    <h3>Épée d'Entraînement</h3>
+                    <p>Arme de débutant</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🗡️</div>
+                    <h3>Dague Délabrée</h3>
+                    <p>Arme légère usée</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🏹</div>
+                    <h3>Arc Courbé</h3>
+                    <p>Arc de base pour archers</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🪄</div>
+                    <h3>Bâton Médiocre de Mage</h3>
+                    <p>Bâton basique pour mages</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🛡️</div>
+                    <h3>Bouclier de Pacotille</h3>
+                    <p>Bouclier de faible qualité</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">📚</div>
+                    <h3>Grimoire Délié</h3>
+                    <p>Livre de sorts ancien</p>
+                </div>
+                
+                <div class="item-card">
+                    <div class="item-icon">🌿</div>
+                    <h3>Bâton Médiocre de Shaman</h3>
+                    <p>Bâton basique pour shamans</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

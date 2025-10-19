@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Bandit Robuste</title>
+    <title>SAO Minecraft - Gorbel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mob_detail.css">
     <link rel="stylesheet" href="navigation.css">
@@ -37,15 +37,15 @@
     <a href="mobs.html" class="nav-back-icon" title="Retour aux mobs"></a>
     <div class="mob-detail-container">
         <div class="mob-header">
-            <div class="mob-icon-large">🛡️</div>
-            <h1 class="mob-detail-title">BANDIT ROBUSTE</h1>
+            <div class="mob-icon-large">👑</div>
+            <h1 class="mob-detail-title">GORBEL</h1>
         </div>
         
         <div class="mob-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Ce bandit à la carrure massive bloque les chemins isolés, utilisant sa force brute pour dépouiller les voyageurs.</p>
+                    <p>Un colosse gélatineux, maître des essaims de slime. Il écrase tout sur son passage, lentement mais sûrement.</p>
                 </div>
             </div>
             
@@ -54,24 +54,37 @@
                 <div class="loot-list">
                     <div class="loot-item">
                         <div class="loot-info">
-                            <span class="loot-icon">🧳</span>
-                            <a href="item_cuir_use.html" class="loot-name">Cuir Usé</a>
+                            <span class="loot-icon">💧</span>
+                            <span class="loot-name mob-clickable" onclick="window.location.href='item_gelee_slime.html'">Gelée de Slime</span>
                         </div>
                         <div class="drop-chance">
                             <div class="drop-bar">
-                                <div class="drop-fill drop-high" style="width: 80%;">80%</div>
+                                <div class="drop-fill" style="width: 30%;">30%</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="loot-item">
                         <div class="loot-info">
-                            <span class="loot-icon">💰</span>
-                            <span class="loot-name">Petite Bourse</span>
+                            <span class="loot-icon">💎</span>
+                            <span class="loot-name mob-clickable" onclick="window.location.href='item_noyau_slime.html'">Noyau de Slime</span>
                         </div>
                         <div class="drop-chance">
                             <div class="drop-bar">
-                                <div class="drop-fill" style="width: 40%;">40%</div>
+                                <div class="drop-fill drop-rare" style="width: 5%;">5%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="loot-item">
+                        <div class="loot-info">
+                            <span class="loot-icon">👑</span>
+                            <span class="loot-name">Essence du Roi des Slimes</span>
+                        </div>
+                        <div class="drop-chance">
+                            <div class="drop-percentage-text">1%</div>
+                            <div class="drop-bar">
+                                <div class="drop-fill drop-rare" style="width: 1%;"></div>
                             </div>
                         </div>
                     </div>
@@ -81,10 +94,19 @@
             <div class="info-section">
                 <div class="info-label">📍 Lieu :</div>
                 <div class="locations-list">
-                    <div class="location-item location-citadelle">
-                        <span class="location-icon">🏰</span>
-                        <span class="location-name">La Citadelle Rouge</span>
+                    <div class="location-item location-marecage">
+                        <span class="location-icon">🗺️</span>
+                        <span class="location-name">Marécage de Vallhat</span>
                     </div>
+                </div>
+            </div>
+            
+            <div class="info-section waypoint-section">
+                <div class="info-label">📍 Waypoint :</div>
+                <div class="waypoint-coords">
+                    <span class="coord-item">X: 290</span>
+                    <span class="coord-separator">•</span>
+                    <span class="coord-item">Z: 3196</span>
                 </div>
             </div>
         </div>

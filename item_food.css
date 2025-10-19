@@ -1,0 +1,307 @@
+.food-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F7B596 100%);
+    padding: 2rem;
+    padding-left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.food-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.food-icon-large {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.food-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #402C39;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.food-info-card {
+    background: rgba(252, 229, 195, 0.95);
+    border: 3px solid #402C39;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 
+        0 8px 25px rgba(64, 44, 57, 0.3),
+        0 0 20px rgba(247, 181, 150, 0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #402C39;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.description-section {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
+
+.description-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #402C39;
+}
+
+.description-text p {
+    margin: 0;
+}
+
+/* Stats de nourriture */
+.food-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(247, 181, 150, 0.3) 0%, rgba(252, 229, 195, 0.5) 100%);
+    border: 2px solid rgba(64, 44, 57, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(64, 44, 57, 0.2);
+}
+
+.hunger-stat {
+    background: linear-gradient(135deg, rgba(139, 195, 74, 0.3) 0%, rgba(205, 220, 57, 0.3) 100%);
+    border-left: 4px solid #8BC34A;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #402C39;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    color: #402C39;
+    font-weight: bold;
+}
+
+/* Listes de mobs */
+.mobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mob-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mob-item.mob-clickable {
+    cursor: pointer;
+}
+
+.mob-item.mob-clickable:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.mob-icon {
+    font-size: 2rem;
+}
+
+.mob-info {
+    flex: 1;
+}
+
+.mob-name {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #402C39;
+    margin-bottom: 0.5rem;
+}
+
+.drop-chance {
+    width: 100%;
+}
+
+.drop-bar {
+    width: 100%;
+    height: 25px;
+    background: rgba(64, 44, 57, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.drop-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5E891B 0%, #7AB51D 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: width 0.5s ease;
+}
+
+.drop-high {
+    background: linear-gradient(90deg, #8BC34A 0%, #9CCC65 100%);
+}
+
+/* Lieux */
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FCE5C3 0%, #5E891B 50%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 3px solid #402C39;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+}
+
+.location-zonne-sanglier {
+    background: linear-gradient(135deg, #FCE5C3 0%, #283B0A 50%) !important;
+    box-shadow: 0 4px 15px rgba(40, 59, 10, 0.4) !important;
+}
+
+.location-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.location-name {
+    font-size: 1.4rem;
+    color: #402C39;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .food-container {
+        padding: 1.5rem;
+        padding-left: 80px;
+    }
+    
+    .food-icon-large {
+        font-size: 4rem;
+    }
+    
+    .food-title {
+        font-size: 2rem;
+    }
+    
+    .food-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .food-container {
+        padding: 1rem;
+        padding-left: 60px;
+    }
+    
+    .food-icon-large {
+        font-size: 3rem;
+    }
+    
+    .food-title {
+        font-size: 1.5rem;
+    }
+}

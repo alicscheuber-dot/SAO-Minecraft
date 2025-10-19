@@ -1,0 +1,30 @@
+/* Override pour les quêtes d'Hanaka avec les couleurs spécifiques */
+.quete-detail-container {
+    background: linear-gradient(135deg, #FCE5C3 0%, #EEA59E 100%) !important;
+}
+
+.quete-info-card {
+    background: rgba(252, 229, 195, 0.95) !important;
+    box-shadow: 
+        0 8px 25px rgba(64, 44, 57, 0.3),
+        0 0 20px rgba(238, 165, 158, 0.5) !important;
+}
+
+.type-badge {
+    background: linear-gradient(135deg, #EEA59E 0%, #e89388 100%) !important;
+}
+
+.task-checkbox:checked + .task-text::before {
+    background: linear-gradient(135deg, #EEA59E 0%, #e89388 100%) !important;
+}
+
+.reward-item {
+    background: linear-gradient(135deg, rgba(238, 165, 158, 0.2) 0%, rgba(252, 229, 195, 0.3) 100%) !important;
+    border-left: 4px solid #EEA59E !important;
+}
+
+.reward-item:hover {
+    background: linear-gradient(135deg, rgba(238, 165, 158, 0.3) 0%, rgba(252, 229, 195, 0.4) 100%) !important;
+    box-shadow: 0 4px 15px rgba(238, 165, 158, 0.4) !important;
+}
+

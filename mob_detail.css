@@ -430,3 +430,75 @@
         font-size: 0.7rem;
     }
 }
+
+/* Section waypoints pour les mobs */
+.waypoints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.waypoint-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(252, 229, 195, 0.6);
+    border-radius: 12px;
+    border: 2px solid rgba(64, 44, 57, 0.3);
+    transition: all 0.3s ease;
+}
+
+.waypoint-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.2);
+    background: rgba(252, 229, 195, 0.8);
+}
+
+.waypoint-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #402C39;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F7B596 100%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #402C39;
+    flex-shrink: 0;
+}
+
+/* Section waypoint pour un seul waypoint */
+.waypoint-section {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(64, 44, 57, 0.2);
+}
+
+.waypoint-coords {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #402C39;
+    background: linear-gradient(135deg, #F7B596, #FCE5C3);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: 2px solid #402C39;
+    box-shadow: 0 4px 12px rgba(64, 44, 57, 0.2);
+}
+
+.coord-item {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+}
+
+.coord-separator {
+    font-size: 1.2rem;
+    opacity: 0.6;
+}

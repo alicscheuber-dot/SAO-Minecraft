@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Peau de Sanglier</title>
+    <title>SAO Minecraft - Viande de Sanglier</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_detail.css">
+    <link rel="stylesheet" href="item_food.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -35,26 +35,40 @@
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
     <a href="ressources.html" class="nav-back-icon" title="Retour aux ressources"></a>
-    <div class="item-detail-container">
-        <h1 class="item-detail-title">PEAU DE SANGLIER</h1>
+    <div class="food-container">
+        <div class="food-header">
+            <div class="food-icon-large">🍖</div>
+            <h1 class="food-title">VIANDE DE SANGLIER</h1>
+        </div>
         
-        <div class="item-info-card">
+        <div class="food-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Utilisable pour de la tannerie basique.</p>
+                    <p>Cette belle viande de sanglier, bien juteuse, peut vous donner encore plus envie de manger !</p>
                 </div>
             </div>
             
-            <div class="info-section category-section">
-                <div class="category-badge">
-                    <span class="category-icon">📂</span>
-                    <span>Catégorie : Matériau P1</span>
+            <div class="food-stats">
+                <div class="stat-card hunger-stat">
+                    <div class="stat-icon">🍗</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Restaure</div>
+                        <div class="stat-value">10 Nourriture</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Cooldown</div>
+                        <div class="stat-value">1s</div>
+                    </div>
                 </div>
             </div>
             
             <div class="info-section">
-                <div class="info-label">📦 Mobs :</div>
+                <div class="info-label">📦 Source :</div>
                 <div class="mobs-list">
                     <div class="mob-item mob-clickable" onclick="window.location.href='mob_sanglier_corrompue.html'">
                         <span class="mob-icon">🐗</span>
@@ -62,7 +76,7 @@
                             <span class="mob-name">Sanglier Corrompue</span>
                             <div class="drop-chance">
                                 <div class="drop-bar">
-                                    <div class="drop-fill drop-high" style="width: 65%;">65%</div>
+                                    <div class="drop-fill" style="width: 65%;">65%</div>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +88,7 @@
                             <span class="mob-name">Pumba</span>
                             <div class="drop-chance">
                                 <div class="drop-bar">
-                                    <div class="drop-fill drop-high" style="width: 65%;">65%</div>
+                                    <div class="drop-fill" style="width: 65%;">65%</div>
                                 </div>
                             </div>
                         </div>
