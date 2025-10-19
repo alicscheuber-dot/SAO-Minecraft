@@ -1,0 +1,262 @@
+/* Styles pour les quêtes secondaires de Mizunari */
+
+.quete-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCE5C3 0%, #FBCE6B 100%);
+    padding: 2rem;
+    padding-left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quete-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #402C39;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Section de recherche */
+.search-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out 0.2s both;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 3px solid #402C39;
+    border-radius: 25px;
+    background: rgba(252, 229, 195, 0.9);
+    color: #402C39;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #402C39;
+    opacity: 0.5;
+}
+
+.search-box input:focus {
+    background: rgba(252, 229, 195, 1);
+    box-shadow: 0 0 20px rgba(251, 206, 107, 0.6);
+    transform: scale(1.02);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #402C39;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.search-results {
+    margin-top: 1rem;
+    display: none;
+}
+
+.no-results {
+    text-align: center;
+    color: #402C39;
+    font-size: 1.1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    border: 2px solid #402C39;
+}
+
+/* Grille de quêtes */
+.quete-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.quete-card {
+    background: linear-gradient(135deg, rgba(252, 229, 195, 0.95) 0%, rgba(251, 206, 107, 0.3) 100%);
+    border: 3px solid #402C39;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quete-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(64, 44, 57, 0.4),
+        0 0 20px rgba(251, 206, 107, 0.6);
+    background: linear-gradient(135deg, rgba(252, 229, 195, 1) 0%, rgba(251, 206, 107, 0.4) 100%);
+}
+
+.quete-card-icon {
+    font-size: 3.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.quete-card h3 {
+    font-size: 1.8rem;
+    color: #402C39;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.quete-card p {
+    font-size: 1rem;
+    color: #402C39;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Badge de localisation Mizunari */
+.location-badge {
+    background: linear-gradient(135deg, #FCE5C3 0%, #FBCE6B 100%) !important;
+    color: #402C39 !important;
+    box-shadow: 0 4px 15px rgba(251, 206, 107, 0.4) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .quete-container {
+        padding: 1.5rem;
+        padding-left: 80px;
+    }
+    
+    .quete-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-section {
+        max-width: 90%;
+        margin-bottom: 2rem;
+    }
+    
+    .search-box input {
+        font-size: 1rem;
+        padding: 0.9rem 2.8rem 0.9rem 1.2rem;
+    }
+    
+    .search-icon {
+        font-size: 1.3rem;
+        right: 1.2rem;
+    }
+    
+    .quete-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .quete-card {
+        padding: 1.5rem;
+    }
+    
+    .quete-card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .quete-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quete-container {
+        padding: 1rem;
+        padding-left: 60px;
+    }
+    
+    .quete-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .search-section {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-box input {
+        font-size: 0.95rem;
+        padding: 0.8rem 2.5rem 0.8rem 1rem;
+    }
+    
+    .search-icon {
+        font-size: 1.2rem;
+        right: 1rem;
+    }
+    
+    .quete-card {
+        padding: 1.2rem;
+    }
+    
+    .quete-card-icon {
+        font-size: 2rem;
+    }
+    
+    .quete-card h3 {
+        font-size: 1.3rem;
+    }
+}
+

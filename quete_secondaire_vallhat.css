@@ -1,0 +1,244 @@
+/* Styles pour les quêtes secondaires de Vallhat */
+
+.quete-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #E0D7C7 0%, #98C3C7 100%);
+    padding: 2rem;
+    padding-left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quete-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2C3E50;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Section de recherche */
+.search-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out 0.2s both;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 3px solid #2C3E50;
+    border-radius: 25px;
+    background: rgba(224, 215, 199, 0.9);
+    color: #2C3E50;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #2C3E50;
+    opacity: 0.5;
+}
+
+.search-box input:focus {
+    background: rgba(224, 215, 199, 1);
+    box-shadow: 0 0 20px rgba(152, 195, 199, 0.6);
+    transform: scale(1.02);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #2C3E50;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.search-results {
+    margin-top: 1rem;
+    display: none;
+}
+
+.no-results {
+    text-align: center;
+    color: #2C3E50;
+    font-size: 1.1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    border: 2px solid #2C3E50;
+}
+
+/* Grille de quêtes */
+.quete-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.quete-card {
+    background: linear-gradient(135deg, rgba(224, 215, 199, 0.95) 0%, rgba(152, 195, 199, 0.3) 100%);
+    border: 3px solid #2C3E50;
+    border-radius: 20px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.quete-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4), 0 0 20px rgba(152, 195, 199, 0.6);
+    background: linear-gradient(135deg, rgba(224, 215, 199, 1) 0%, rgba(152, 195, 199, 0.4) 100%);
+}
+
+.quete-card h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+}
+
+.quete-card p {
+    font-size: 1.1rem;
+    color: #2C3E50;
+    opacity: 0.8;
+}
+
+/* Badge de localisation Vallhat */
+.location-badge {
+    background: linear-gradient(135deg, #E0D7C7 0%, #98C3C7 100%) !important;
+    color: #2C3E50 !important;
+    box-shadow: 0 4px 15px rgba(152, 195, 199, 0.4) !important;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .quete-container {
+        padding: 1.5rem;
+        padding-left: 80px;
+    }
+    
+    .quete-title {
+        font-size: 2rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-section {
+        margin-bottom: 2rem;
+    }
+    
+    .search-box input {
+        padding: 0.9rem 2.5rem 0.9rem 1.2rem;
+        font-size: 1rem;
+    }
+    
+    .search-icon {
+        right: 1.2rem;
+        font-size: 1.3rem;
+    }
+    
+    .quete-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .quete-card {
+        padding: 1.5rem;
+    }
+    
+    .quete-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .quete-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quete-container {
+        padding: 1rem;
+        padding-left: 60px;
+    }
+    
+    .quete-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+    
+    .search-box input {
+        padding: 0.8rem 2.2rem 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .search-icon {
+        right: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .quete-grid {
+        gap: 1rem;
+    }
+    
+    .quete-card {
+        padding: 1.2rem;
+    }
+    
+    .quete-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .quete-card p {
+        font-size: 0.95rem;
+    }
+}
+

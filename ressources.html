@@ -9,8 +9,16 @@
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+    <div class="personal-footer">
+        <div class="footer-content">
+            <span class="discord-icon">💬</span>
+            <span class="discord-label">Discord:</span>
+            <span class="discord-username">yui028795</span>
+        </div>
+    </div>
     <nav class="sidenav">
         <a href="locations.html" class="sidenav-item" title="Lieux">
             <div class="sidenav-icon">🗺️</div>
@@ -32,6 +40,14 @@
             <div class="sidenav-icon">📜</div>
             <div class="sidenav-text">Quêtes</div>
         </a>
+        <a href="npc.html" class="sidenav-item" title="NPC">
+            <div class="sidenav-icon">👤</div>
+            <div class="sidenav-text">NPC</div>
+        </a>
+        <a href="carte_interactive.html" class="sidenav-item" title="Carte">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Carte</div>
+        </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
     <a href="menu.html" class="nav-back-icon" title="Retour au menu"></a>
@@ -46,63 +62,22 @@
             <div class="search-results" id="searchResults"></div>
         </div>
         
-        <div class="ressources-grid" id="ressourcesGrid">
-            <div class="ressource-card" onclick="window.location.href='item_cuir_use.html'">
-                <div class="ressource-icon">🧳</div>
-                <h3>Cuir Usé</h3>
-                <p>Matériau obtenu des bandits</p>
-            </div>
-            
-            <div class="ressource-card">
-                <div class="ressource-icon">💰</div>
-                <h3>Petite Bourse</h3>
-                <p>Contient de l'argent</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_gelee_slime.html'">
-                <div class="ressource-icon">📦</div>
-                <h3>Gelée de Slime</h3>
-                <p>Matériau gélatineux des slimes</p>
-            </div>
-            
-            <div class="ressource-card ressource-rare" onclick="window.location.href='item_noyau_slime.html'">
-                <div class="ressource-icon">💎</div>
-                <h3>Noyau de Slime</h3>
-                <p>Ressource rare des slimes</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_lingot_cuivre.html'">
-                <div class="ressource-icon">🟫</div>
-                <h3>Lingot de Cuivre</h3>
-                <p>Matériau raffiné pour la forge</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_peau_sanglier.html'">
-                <div class="ressource-icon">🐗</div>
-                <h3>Peau de Sanglier</h3>
-                <p>Matériau de base pour la tannerie</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_carapace_ika.html'">
-                <div class="ressource-icon">🛡️</div>
-                <h3>Carapace d'Ika</h3>
-                <p>Carapace ancienne de la tortue Ika</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_viande_sanglier.html'">
-                <div class="ressource-icon">🍖</div>
-                <h3>Viande de Sanglier</h3>
-                <p>Nourriture juteuse et restaurante</p>
-            </div>
-            
-            <div class="ressource-card" onclick="window.location.href='item_sandwich_nepenthes.html'">
-                <div class="ressource-icon">🥪</div>
-                <h3>Sandwich de Népenthès</h3>
-                <p>Plat moderne aux saveurs nostalgiques</p>
-            </div>
+        <div class="ressources-grid-compact">
+            <div class="ressource-tag" onclick="window.location.href='item_carapace_ika.html'">🛡️ Carapace d'Ika</div>
+            <div class="ressource-tag" onclick="window.location.href='item_cristal_corrompu.html'">💎 Cristal Corrompu</div>
+            <div class="ressource-tag" onclick="window.location.href='item_crocs_loup.html'">🦷 Crocs de Loup</div>
+            <div class="ressource-tag" onclick="window.location.href='item_cuir_use.html'">🧳 Cuir Usé</div>
+            <div class="ressource-tag" onclick="window.location.href='item_ecorce_sylvestre.html'">🌲 Écorce Sylvestre</div>
+            <div class="ressource-tag" onclick="window.location.href='item_fourrure_loup.html'">🧶 Fourrure de Loup</div>
+            <div class="ressource-tag ressource-rare" onclick="window.location.href='item_gelee_slime.html'">📦 Gelée de Slime</div>
+            <div class="ressource-tag" onclick="window.location.href='item_lingot_cuivre.html'">🟫 Lingot de Cuivre</div>
+            <div class="ressource-tag ressource-rare" onclick="window.location.href='item_noyau_slime.html'">💎 Noyau de Slime</div>
+            <div class="ressource-tag" onclick="window.location.href='item_peau_sanglier.html'">🐗 Peau de Sanglier</div>
+            <div class="ressource-tag" onclick="window.location.href='item_petite_bourse.html'">💰 Petite Bourse</div>
+            <div class="ressource-tag" onclick="window.location.href='item_sandwich_nepenthes.html'">🥪 Sandwich de Népenthès</div>
+            <div class="ressource-tag ressource-rare" onclick="window.location.href='item_tissu_spectral.html'">👻 Tissu Spectral</div>
+            <div class="ressource-tag" onclick="window.location.href='item_viande_sanglier.html'">🍖 Viande de Sanglier</div>
         </div>
-        
-        <button class="back-button" onclick="window.location.href='menu.html'">← Retour au menu principal</button>
     </div>
     
     <script src="ressources.js"></script>

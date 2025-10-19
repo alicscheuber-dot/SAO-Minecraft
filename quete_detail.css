@@ -94,6 +94,17 @@
     box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
 }
 
+.location-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
 /* Section Waypoint */
 .waypoint-section {
     background: rgba(255, 255, 255, 0.5);

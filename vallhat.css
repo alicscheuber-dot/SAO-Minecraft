@@ -1,0 +1,165 @@
+/* Styles pour la page Vallhat */
+
+.location-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #E0D7C7 0%, #98C3C7 100%);
+    padding: 2rem;
+    padding-left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2C3E50;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.3em;
+    margin-bottom: 3rem;
+    text-align: center;
+    animation: fadeInDown 1s ease-out;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.content-card {
+    background: linear-gradient(135deg, rgba(224, 215, 199, 0.95) 0%, rgba(152, 195, 199, 0.3) 100%);
+    border: 3px solid #2C3E50;
+    border-radius: 20px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.content-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4), 0 0 20px rgba(152, 195, 199, 0.6);
+    background: linear-gradient(135deg, rgba(224, 215, 199, 1) 0%, rgba(152, 195, 199, 0.4) 100%);
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+.content-card h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+}
+
+.content-card p {
+    font-size: 1.1rem;
+    color: #2C3E50;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .location-container {
+        padding: 1.5rem;
+        padding-left: 80px;
+    }
+    
+    .location-title {
+        font-size: 2.5rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 2rem;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .content-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        font-size: 3rem;
+    }
+    
+    .content-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .content-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .location-container {
+        padding: 1rem;
+        padding-left: 60px;
+    }
+    
+    .location-title {
+        font-size: 2rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 1.5rem;
+    }
+    
+    .content-card {
+        padding: 1.2rem;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .content-card h3 {
+        font-size: 1.3rem;
+    }
+}
+

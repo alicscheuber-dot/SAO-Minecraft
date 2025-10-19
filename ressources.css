@@ -245,6 +245,62 @@
 .ressource-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.6s both; }
 .ressource-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.7s both; }
 
+/* Styles pour les étiquettes compactes */
+.ressources-grid-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1400px;
+    width: 100%;
+    justify-content: center;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.ressource-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(252, 229, 195, 0.95) 0%, rgba(252, 229, 195, 0.8) 100%);
+    border: 2px solid #402C39;
+    border-radius: 25px;
+    color: #402C39;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(64, 44, 57, 0.2);
+    white-space: nowrap;
+}
+
+.ressource-tag:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, rgba(252, 229, 195, 1) 0%, rgba(252, 229, 195, 0.9) 100%);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.4);
+    border-color: #FCE5C3;
+}
+
+.ressource-tag.ressource-rare {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.3) 0%, rgba(252, 229, 195, 0.95) 100%) !important;
+    border: 2px solid #9B59B6 !important;
+    box-shadow: 0 2px 8px rgba(155, 89, 182, 0.3), 0 0 10px rgba(155, 89, 182, 0.2) !important;
+    color: #9B59B6;
+    animation: rarePulse 2s ease-in-out infinite;
+}
+
+.ressource-tag.ressource-rare:hover {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.4) 0%, rgba(252, 229, 195, 1) 100%) !important;
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.5), 0 0 20px rgba(155, 89, 182, 0.4) !important;
+}
+
+@keyframes rarePulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(155, 89, 182, 0.3), 0 0 10px rgba(155, 89, 182, 0.2);
+    }
+    50% {
+        box-shadow: 0 2px 12px rgba(155, 89, 182, 0.5), 0 0 20px rgba(155, 89, 182, 0.4);
+    }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .ressources-title {
@@ -275,6 +331,15 @@
     .ressource-card p {
         font-size: 0.9rem;
     }
+    
+    .ressources-grid-compact {
+        gap: 0.8rem;
+    }
+    
+    .ressource-tag {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -298,5 +363,14 @@
     
     .ressource-card h3 {
         font-size: 1.3rem;
+    }
+    
+    .ressources-grid-compact {
+        gap: 0.6rem;
+    }
+    
+    .ressource-tag {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
     }
 }
