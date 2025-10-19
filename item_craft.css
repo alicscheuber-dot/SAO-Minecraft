@@ -421,3 +421,43 @@
     font-weight: bold;
     color: #402C39;
 }
+
+/* Section obtention/source */
+.source-section {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    border-radius: 15px;
+    border: 2px solid #4CAF50;
+}
+
+.source-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    border: 2px solid #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.source-clickable {
+    cursor: pointer;
+}
+
+.source-clickable:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    background: rgba(255, 255, 255, 1);
+}
+
+.source-icon {
+    font-size: 1.5rem;
+}
+
+.source-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2E7D32;
+}

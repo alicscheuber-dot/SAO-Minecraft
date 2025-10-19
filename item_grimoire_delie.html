@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Bottes du Débutant</title>
+    <title>SAO Minecraft - Grimoire Délié</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_craft.css">
+    <link rel="stylesheet" href="item_weapon.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -52,86 +52,97 @@
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
     <a href="items.html" class="nav-back-icon" id="backButton" title="Retour"></a>
     <script>
-        // Détecter si on vient du marchand et ajuster le lien de retour
         const backButton = document.getElementById('backButton');
         if (localStorage.getItem('fromMarchand') === 'true') {
             backButton.href = 'npc_marchand_depart.html';
             backButton.title = 'Retour au marchand';
-            // Réinitialiser le flag
             localStorage.removeItem('fromMarchand');
         }
     </script>
-    <div class="item-craft-container">
-        <div class="item-header">
-            <div class="item-icon-large">👢</div>
-            <h1 class="item-craft-title">BOTTES DU DÉBUTANT</h1>
+    <div class="weapon-container">
+        <div class="weapon-header">
+            <div class="weapon-icon-large">📚</div>
+            <h1 class="weapon-title">GRIMOIRE DÉLIÉ</h1>
+            <div class="weapon-subtitle">Livre arcanique de seconde main</div>
         </div>
         
-        <div class="item-craft-card">
+        <div class="weapon-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Protège à peine contre une lame, mais c'est toujours mieux que rien.</p>
+                    <p>Un livre incomplet débordant de magie.</p>
                 </div>
             </div>
             
-            <div class="info-section craft-info-section">
-                <div class="craft-stats">
-                    <div class="stat-item">
-                        <span class="stat-icon">⏱️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Temps de fabrication :</div>
-                            <div class="stat-value">10s</div>
-                        </div>
+            <div class="weapon-stats">
+                <div class="stat-card class-stat multi-class-stat">
+                    <div class="stat-icon">🪄</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Classes</div>
+                        <div class="stat-value">Shaman, Mage</div>
                     </div>
-                    
-                    <div class="stat-item">
-                        <span class="stat-icon">📊</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Level Min. :</div>
-                            <div class="stat-value">1</div>
-                        </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Level Min.</div>
+                        <div class="stat-value">1</div>
                     </div>
-                    
-                    <div class="stat-item stat-health">
-                        <span class="stat-icon">❤️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Santé :</div>
-                            <div class="stat-value">+5-7</div>
-                        </div>
+                </div>
+                
+                <div class="stat-card slot-stat">
+                    <div class="stat-icon">✋</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Slot</div>
+                        <div class="stat-value">Seconde Main</div>
                     </div>
                 </div>
             </div>
             
-            <div class="info-section">
-                <div class="info-label">🔨 Ingrédients :</div>
-                <div class="ingredients-list">
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_peau_sanglier.html'">
-                        <span class="ingredient-icon">🐗</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Peau de Sanglier</span>
-                            <span class="ingredient-quantity">x5</span>
-                        </div>
+            <div class="combat-stats">
+                <div class="combat-stat mana-boost-stat">
+                    <div class="combat-icon">💙</div>
+                    <div class="combat-info">
+                        <div class="combat-label">Mana maximum</div>
+                        <div class="combat-value">+15</div>
                     </div>
-                    
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_lingot_cuivre.html'">
-                        <span class="ingredient-icon">🟫</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Lingot de Cuivre</span>
-                            <span class="ingredient-quantity">x2</span>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section category-section">
+                <div class="category-badge grimoire-badge">
+                    <span class="category-icon">📚</span>
+                    <span>Catégorie : Livre Arcanique</span>
+                </div>
+            </div>
+            
+            <div class="info-section note-section">
+                <div class="info-label">💡 Note :</div>
+                <div class="note-text">
+                    <p>Équipement magique de seconde main. Augmente votre réserve de mana pour lancer plus de sorts.</p>
                 </div>
             </div>
             
             <div class="info-section source-section">
                 <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_armure.html'">
-                    <span class="source-icon">🔨</span>
-                    <span class="source-text">Forgeron Armure</span>
+                <div class="source-card source-clickable" onclick="window.location.href='npc_marchand_depart.html'">
+                    <span class="source-icon">🏪</span>
+                    <span class="source-text">Marchand du Départ</span>
+                </div>
+                <div class="price-card">
+                    <span class="price-icon">💰</span>
+                    <span class="price-label">Prix d'achat :</span>
+                    <span class="price-value">25 Cols</span>
+                </div>
+                <div class="price-card price-sell">
+                    <span class="price-icon">💵</span>
+                    <span class="price-label">Prix de vente :</span>
+                    <span class="price-value">4 Cols</span>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+

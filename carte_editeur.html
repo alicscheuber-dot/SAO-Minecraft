@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Éditeur de Carte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FCE5C3 0%, #402C39 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            display: flex;
+            height: calc(100vh - 200px);
+        }
+
+        .map-container {
+            flex: 1;
+            position: relative;
+            overflow: auto;
+            background: #f5f5f5;
+            border-right: 3px solid #402C39;
+        }
+
+        #mapCanvas {
+            display: block;
+            cursor: crosshair;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .controls-panel {
+            width: 350px;
+            padding: 20px;
+            background: #fafafa;
+            overflow-y: auto;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-section h3 {
+            color: #402C39;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #402C39;
+            padding-bottom: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #FCE5C3 0%, #e8d5b3 100%);
+            color: #402C39;
+            border: 2px solid #402C39;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #e8d5b3 0%, #FCE5C3 100%);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #402C39;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #402C39;
+        }
+
+        .zones-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .zone-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #402C39;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .zone-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zone-info {
+            flex: 1;
+        }
+
+        .zone-name {
+            font-weight: 700;
+            color: #402C39;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .zone-coords {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: monospace;
+        }
+
+        .zone-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-small:hover {
+            transform: scale(1.1);
+        }
+
+        .mode-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(64, 44, 57, 0.95);
+            color: #FCE5C3;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+
+        .instructions h4 {
+            margin-bottom: 10px;
+            color: #856404;
+        }
+
+        .instructions ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .export-section {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .export-section textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            border: 2px solid #28a745;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            border: 2px solid #333;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .stat-box {
+            padding: 10px;
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Éditeur de Carte Interactive - SAO Minecraft</h1>
+            <p>Dessinez des zones rectangulaires directement sur la carte</p>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <canvas id="mapCanvas"></canvas>
+            </div>
+
+            <div class="controls-panel">
+                <div class="instructions">
+                    <h4>📝 Instructions :</h4>
+                    <ul>
+                        <li><strong>Dessiner :</strong> Cliquez et glissez sur la carte</li>
+                        <li><strong>Annuler :</strong> Appuyez sur Échap pendant le dessin</li>
+                        <li><strong>Supprimer :</strong> Cliquez sur 🗑️ à côté d'une zone</li>
+                    </ul>
+                </div>
+
+                <div class="control-section">
+                    <h3>🎨 Nouvelle Zone</h3>
+                    <div class="input-group">
+                        <label>Nom de la zone :</label>
+                        <input type="text" id="zoneName" placeholder="Ex: Ville du Départ">
+                    </div>
+                    <div class="input-group">
+                        <label>Couleur de la zone :</label>
+                        <input type="color" id="zoneColor" value="#3498db">
+                        <span class="color-preview" id="colorPreview"></span>
+                    </div>
+                    <div class="input-group">
+                        <label>Opacité :</label>
+                        <input type="range" id="zoneOpacity" min="0.1" max="0.8" step="0.1" value="0.3">
+                        <span id="opacityValue">30%</span>
+                    </div>
+                    <div class="input-group">
+                        <label>Lien vers (optionnel) :</label>
+                        <input type="text" id="zoneLink" placeholder="Ex: ville_depart.html">
+                    </div>
+                    <button class="btn btn-primary" id="drawModeBtn">✏️ Mode Dessin</button>
+                    <div class="stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Zones créées</div>
+                            <div class="stat-value" id="zoneCount">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Mode</div>
+                            <div class="stat-value" id="modeText">👁️</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>📋 Zones Définies</h3>
+                    <div class="zones-list" id="zonesList">
+                        <p style="text-align: center; color: #999; padding: 20px;">Aucune zone définie</p>
+                    </div>
+                    <button class="btn btn-danger" id="clearAllBtn">🗑️ Supprimer Toutes les Zones</button>
+                </div>
+
+                <div class="control-section export-section">
+                    <h3>💾 Exporter</h3>
+                    <button class="btn btn-success" id="exportBtn">📥 Exporter JSON</button>
+                    <textarea id="exportData" readonly placeholder="Les données JSON apparaîtront ici..."></textarea>
+                    <button class="btn btn-secondary" id="copyBtn">📋 Copier dans le Presse-papier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mode-indicator" id="modeIndicator" style="display: none;">
+        ✏️ MODE DESSIN ACTIVÉ
+    </div>
+
+    <script>
+        const canvas = document.getElementById('mapCanvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        
+        let zones = [];
+        let isDrawing = false;
+        let startX, startY;
+        let currentRect = null;
+        let drawMode = false;
+        
+        // Charger l'image de la carte
+        img.src = '1sao-map.png';
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            redraw();
+        };
+
+        // Éléments DOM
+        const zoneNameInput = document.getElementById('zoneName');
+        const zoneColorInput = document.getElementById('zoneColor');
+        const zoneOpacityInput = document.getElementById('zoneOpacity');
+        const zoneLinkInput = document.getElementById('zoneLink');
+        const drawModeBtn = document.getElementById('drawModeBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const zonesList = document.getElementById('zonesList');
+        const modeIndicator = document.getElementById('modeIndicator');
+        const zoneCount = document.getElementById('zoneCount');
+        const modeText = document.getElementById('modeText');
+        const colorPreview = document.getElementById('colorPreview');
+        const opacityValue = document.getElementById('opacityValue');
+
+        // Mise à jour de l'aperçu de couleur
+        zoneColorInput.addEventListener('input', (e) => {
+            colorPreview.style.backgroundColor = e.target.value;
+        });
+        colorPreview.style.backgroundColor = zoneColorInput.value;
+
+        // Mise à jour de l'opacité
+        zoneOpacityInput.addEventListener('input', (e) => {
+            opacityValue.textContent = Math.round(e.target.value * 100) + '%';
+        });
+
+        // Toggle mode dessin
+        drawModeBtn.addEventListener('click', () => {
+            drawMode = !drawMode;
+            if (drawMode) {
+                drawModeBtn.textContent = '👁️ Mode Visualisation';
+                drawModeBtn.classList.remove('btn-primary');
+                drawModeBtn.classList.add('btn-secondary');
+                modeIndicator.style.display = 'block';
+                modeText.textContent = '✏️';
+                canvas.style.cursor = 'crosshair';
+            } else {
+                drawModeBtn.textContent = '✏️ Mode Dessin';
+                drawModeBtn.classList.remove('btn-secondary');
+                drawModeBtn.classList.add('btn-primary');
+                modeIndicator.style.display = 'none';
+                modeText.textContent = '👁️';
+                canvas.style.cursor = 'default';
+            }
+        });
+
+        // Événements de dessin
+        canvas.addEventListener('mousedown', (e) => {
+            if (!drawMode) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+            isDrawing = true;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing || !drawMode) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const currentX = e.clientX - rect.left;
+            const currentY = e.clientY - rect.top;
+            
+            currentRect = {
+                x: Math.min(startX, currentX),
+                y: Math.min(startY, currentY),
+                width: Math.abs(currentX - startX),
+                height: Math.abs(currentY - startY)
+            };
+            
+            redraw();
+            
+            // Dessiner le rectangle en cours
+            ctx.strokeStyle = zoneColorInput.value;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(currentRect.x, currentRect.y, currentRect.width, currentRect.height);
+            ctx.fillStyle = zoneColorInput.value + Math.round(zoneOpacityInput.value * 255).toString(16).padStart(2, '0');
+            ctx.fillRect(currentRect.x, currentRect.y, currentRect.width, currentRect.height);
+        });
+
+        canvas.addEventListener('mouseup', (e) => {
+            if (!isDrawing || !drawMode) return;
+            isDrawing = false;
+            
+            if (currentRect && currentRect.width > 10 && currentRect.height > 10) {
+                const zoneName = zoneNameInput.value.trim() || `Zone ${zones.length + 1}`;
+                zones.push({
+                    name: zoneName,
+                    x: Math.round(currentRect.x),
+                    y: Math.round(currentRect.y),
+                    width: Math.round(currentRect.width),
+                    height: Math.round(currentRect.height),
+                    color: zoneColorInput.value,
+                    opacity: parseFloat(zoneOpacityInput.value),
+                    link: zoneLinkInput.value.trim()
+                });
+                
+                zoneNameInput.value = '';
+                zoneLinkInput.value = '';
+                updateZonesList();
+                redraw();
+            }
+            
+            currentRect = null;
+        });
+
+        // Annuler avec Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isDrawing) {
+                isDrawing = false;
+                currentRect = null;
+                redraw();
+            }
+        });
+
+        // Redessiner le canvas
+        function redraw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            
+            zones.forEach((zone, index) => {
+                // Dessiner la zone
+                ctx.fillStyle = zone.color + Math.round(zone.opacity * 255).toString(16).padStart(2, '0');
+                ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
+                
+                // Bordure
+                ctx.strokeStyle = zone.color;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+                
+                // Nom de la zone
+                ctx.fillStyle = '#fff';
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 3;
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const textX = zone.x + zone.width / 2;
+                const textY = zone.y + zone.height / 2;
+                ctx.strokeText(zone.name, textX, textY);
+                ctx.fillText(zone.name, textX, textY);
+            });
+        }
+
+        // Mettre à jour la liste des zones
+        function updateZonesList() {
+            zoneCount.textContent = zones.length;
+            
+            if (zones.length === 0) {
+                zonesList.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Aucune zone définie</p>';
+                return;
+            }
+            
+            zonesList.innerHTML = zones.map((zone, index) => `
+                <div class="zone-item">
+                    <div class="zone-info">
+                        <div class="zone-name">${zone.name}</div>
+                        <div class="zone-coords">x:${zone.x}, y:${zone.y}, w:${zone.width}, h:${zone.height}</div>
+                    </div>
+                    <div class="zone-actions">
+                        <button class="btn-small btn-delete" onclick="deleteZone(${index})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Supprimer une zone
+        function deleteZone(index) {
+            if (confirm(`Supprimer la zone "${zones[index].name}" ?`)) {
+                zones.splice(index, 1);
+                updateZonesList();
+                redraw();
+            }
+        }
+
+        // Supprimer toutes les zones
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('Supprimer toutes les zones ?')) {
+                zones = [];
+                updateZonesList();
+                redraw();
+            }
+        });
+
+        // Exporter en JSON
+        exportBtn.addEventListener('click', () => {
+            const exportData = {
+                mapImage: '1sao-map.png',
+                zones: zones
+            };
+            document.getElementById('exportData').value = JSON.stringify(exportData, null, 2);
+        });
+
+        // Copier dans le presse-papier
+        copyBtn.addEventListener('click', () => {
+            const textarea = document.getElementById('exportData');
+            if (textarea.value) {
+                textarea.select();
+                document.execCommand('copy');
+                copyBtn.textContent = '✅ Copié !';
+                setTimeout(() => {
+                    copyBtn.textContent = '📋 Copier dans le Presse-papier';
+                }, 2000);
+            }
+        });
+
+        // Rendre deleteZone accessible globalement
+        window.deleteZone = deleteZone;
+    </script>
+</body>
+</html>
+

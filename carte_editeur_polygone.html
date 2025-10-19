@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Éditeur de Carte (Polygones)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FCE5C3 0%, #402C39 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            display: flex;
+            height: calc(100vh - 200px);
+        }
+
+        .map-container {
+            flex: 1;
+            position: relative;
+            overflow: auto;
+            background: #f5f5f5;
+            border-right: 3px solid #402C39;
+        }
+
+        #mapCanvas {
+            display: block;
+            cursor: crosshair;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .controls-panel {
+            width: 380px;
+            padding: 20px;
+            background: #fafafa;
+            overflow-y: auto;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-section h3 {
+            color: #402C39;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #402C39;
+            padding-bottom: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(64, 44, 57, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #FCE5C3 0%, #e8d5b3 100%);
+            color: #402C39;
+            border: 2px solid #402C39;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #e8d5b3 0%, #FCE5C3 100%);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #402C39;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #402C39;
+        }
+
+        .zones-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .zone-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #402C39;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .zone-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zone-info {
+            flex: 1;
+        }
+
+        .zone-name {
+            font-weight: 700;
+            color: #402C39;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .zone-coords {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: monospace;
+        }
+
+        .zone-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-small:hover {
+            transform: scale(1.1);
+        }
+
+        .mode-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(64, 44, 57, 0.95);
+            color: #FCE5C3;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+
+        .instructions h4 {
+            margin-bottom: 10px;
+            color: #856404;
+        }
+
+        .instructions ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .export-section {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .export-section textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            border: 2px solid #28a745;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            border: 2px solid #333;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .stat-box {
+            padding: 10px;
+            background: linear-gradient(135deg, #402C39 0%, #5a3d4f 100%);
+            color: #FCE5C3;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .point-counter {
+            background: #d1ecf1;
+            border: 2px solid #17a2b8;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Éditeur de Carte Interactive - Tracé à Main Levée</h1>
+            <p>Cliquez pour placer des points et créer des zones polygonales personnalisées</p>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <canvas id="mapCanvas"></canvas>
+            </div>
+
+            <div class="controls-panel">
+                <div class="instructions">
+                    <h4>📝 Instructions :</h4>
+                    <ul>
+                        <li><strong>Placer un point :</strong> Cliquez sur la carte</li>
+                        <li><strong>Fermer la zone :</strong> Cliquez près du premier point ou double-cliquez</li>
+                        <li><strong>Annuler le point :</strong> Clic droit</li>
+                        <li><strong>Terminer :</strong> Appuyez sur Entrée</li>
+                        <li><strong>Annuler tout :</strong> Appuyez sur Échap</li>
+                    </ul>
+                </div>
+
+                <div class="control-section">
+                    <h3>🎨 Nouvelle Zone</h3>
+                    <div class="input-group">
+                        <label>Nom de la zone :</label>
+                        <input type="text" id="zoneName" placeholder="Ex: Ville du Départ">
+                    </div>
+                    <div class="input-group">
+                        <label>Couleur de la zone :</label>
+                        <input type="color" id="zoneColor" value="#3498db">
+                        <span class="color-preview" id="colorPreview"></span>
+                    </div>
+                    <div class="input-group">
+                        <label>Opacité :</label>
+                        <input type="range" id="zoneOpacity" min="0.1" max="0.8" step="0.1" value="0.3">
+                        <span id="opacityValue">30%</span>
+                    </div>
+                    <div class="input-group">
+                        <label>Lien vers (optionnel) :</label>
+                        <input type="text" id="zoneLink" placeholder="Ex: ville_depart.html">
+                    </div>
+                    <button class="btn btn-primary" id="drawModeBtn">✏️ Commencer le Tracé</button>
+                    <div class="point-counter" id="pointCounter" style="display: none;">
+                        Points placés : <span id="pointCount">0</span>
+                    </div>
+                    <button class="btn btn-warning" id="finishZoneBtn" style="display: none;">✅ Terminer la Zone</button>
+                    <button class="btn btn-danger" id="cancelDrawBtn" style="display: none;">❌ Annuler le Tracé</button>
+                    <div class="stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Zones créées</div>
+                            <div class="stat-value" id="zoneCount">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Mode</div>
+                            <div class="stat-value" id="modeText">👁️</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>📋 Zones Définies</h3>
+                    <div class="zones-list" id="zonesList">
+                        <p style="text-align: center; color: #999; padding: 20px;">Aucune zone définie</p>
+                    </div>
+                    <button class="btn btn-danger" id="clearAllBtn">🗑️ Supprimer Toutes les Zones</button>
+                </div>
+
+                <div class="control-section export-section">
+                    <h3>💾 Exporter</h3>
+                    <button class="btn btn-success" id="exportBtn">📥 Exporter JSON</button>
+                    <textarea id="exportData" readonly placeholder="Les données JSON apparaîtront ici..."></textarea>
+                    <button class="btn btn-secondary" id="copyBtn">📋 Copier dans le Presse-papier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mode-indicator" id="modeIndicator" style="display: none;">
+        ✏️ MODE TRACÉ ACTIVÉ
+    </div>
+
+    <script>
+        const canvas = document.getElementById('mapCanvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        
+        let zones = [];
+        let currentPoints = [];
+        let drawMode = false;
+        let isDrawing = false;
+        
+        // Charger l'image de la carte
+        img.src = 'map.avif';
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            redraw();
+        };
+
+        // Éléments DOM
+        const zoneNameInput = document.getElementById('zoneName');
+        const zoneColorInput = document.getElementById('zoneColor');
+        const zoneOpacityInput = document.getElementById('zoneOpacity');
+        const zoneLinkInput = document.getElementById('zoneLink');
+        const drawModeBtn = document.getElementById('drawModeBtn');
+        const finishZoneBtn = document.getElementById('finishZoneBtn');
+        const cancelDrawBtn = document.getElementById('cancelDrawBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const zonesList = document.getElementById('zonesList');
+        const modeIndicator = document.getElementById('modeIndicator');
+        const zoneCount = document.getElementById('zoneCount');
+        const modeText = document.getElementById('modeText');
+        const colorPreview = document.getElementById('colorPreview');
+        const opacityValue = document.getElementById('opacityValue');
+        const pointCounter = document.getElementById('pointCounter');
+        const pointCount = document.getElementById('pointCount');
+
+        // Mise à jour de l'aperçu de couleur
+        zoneColorInput.addEventListener('input', (e) => {
+            colorPreview.style.backgroundColor = e.target.value;
+        });
+        colorPreview.style.backgroundColor = zoneColorInput.value;
+
+        // Mise à jour de l'opacité
+        zoneOpacityInput.addEventListener('input', (e) => {
+            opacityValue.textContent = Math.round(e.target.value * 100) + '%';
+        });
+
+        // Commencer le tracé
+        drawModeBtn.addEventListener('click', () => {
+            if (!zoneName.value.trim()) {
+                alert('Veuillez entrer un nom pour la zone');
+                return;
+            }
+            
+            drawMode = true;
+            isDrawing = true;
+            currentPoints = [];
+            
+            drawModeBtn.style.display = 'none';
+            finishZoneBtn.style.display = 'block';
+            cancelDrawBtn.style.display = 'block';
+            pointCounter.style.display = 'block';
+            modeIndicator.style.display = 'block';
+            modeText.textContent = '✏️';
+            canvas.style.cursor = 'crosshair';
+            
+            updatePointCount();
+        });
+
+        // Terminer la zone
+        finishZoneBtn.addEventListener('click', () => {
+            finishCurrentZone();
+        });
+
+        // Annuler le tracé
+        cancelDrawBtn.addEventListener('click', () => {
+            cancelDrawing();
+        });
+
+        // Événement de clic sur le canvas
+        canvas.addEventListener('click', (e) => {
+            if (!isDrawing) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = Math.round((e.clientX - rect.left) * scaleX);
+            const y = Math.round((e.clientY - rect.top) * scaleY);
+            
+            // Vérifier si on clique près du premier point pour fermer
+            if (currentPoints.length > 2) {
+                const firstPoint = currentPoints[0];
+                const distance = Math.sqrt(Math.pow(x - firstPoint.x, 2) + Math.pow(y - firstPoint.y, 2));
+                
+                if (distance < 15) {
+                    finishCurrentZone();
+                    return;
+                }
+            }
+            
+            currentPoints.push({ x, y });
+            updatePointCount();
+            redraw();
+        });
+
+        // Double-clic pour terminer
+        canvas.addEventListener('dblclick', (e) => {
+            if (!isDrawing) return;
+            e.preventDefault();
+            finishCurrentZone();
+        });
+
+        // Clic droit pour supprimer le dernier point
+        canvas.addEventListener('contextmenu', (e) => {
+            if (!isDrawing) return;
+            e.preventDefault();
+            
+            if (currentPoints.length > 0) {
+                currentPoints.pop();
+                updatePointCount();
+                redraw();
+            }
+        });
+
+        // Mouvement de la souris pour afficher l'aperçu
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing || currentPoints.length === 0) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = (e.clientX - rect.left) * scaleX;
+            const y = (e.clientY - rect.top) * scaleY;
+            
+            redraw();
+            
+            // Dessiner la ligne de prévisualisation
+            ctx.strokeStyle = zoneColorInput.value;
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(currentPoints[currentPoints.length - 1].x, currentPoints[currentPoints.length - 1].y);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        });
+
+        // Touches clavier
+        document.addEventListener('keydown', (e) => {
+            if (!isDrawing) return;
+            
+            if (e.key === 'Enter') {
+                finishCurrentZone();
+            } else if (e.key === 'Escape') {
+                cancelDrawing();
+            }
+        });
+
+        // Fonction pour terminer la zone
+        function finishCurrentZone() {
+            if (currentPoints.length < 3) {
+                alert('Vous devez placer au moins 3 points pour créer une zone');
+                return;
+            }
+            
+            const zoneName = zoneNameInput.value.trim() || `Zone ${zones.length + 1}`;
+            zones.push({
+                name: zoneName,
+                points: [...currentPoints],
+                color: zoneColorInput.value,
+                opacity: parseFloat(zoneOpacityInput.value),
+                link: zoneLinkInput.value.trim()
+            });
+            
+            cancelDrawing();
+            updateZonesList();
+            redraw();
+        }
+
+        // Fonction pour annuler le dessin
+        function cancelDrawing() {
+            currentPoints = [];
+            isDrawing = false;
+            drawMode = false;
+            
+            drawModeBtn.style.display = 'block';
+            finishZoneBtn.style.display = 'none';
+            cancelDrawBtn.style.display = 'none';
+            pointCounter.style.display = 'none';
+            modeIndicator.style.display = 'none';
+            modeText.textContent = '👁️';
+            canvas.style.cursor = 'default';
+            
+            redraw();
+        }
+
+        // Mettre à jour le compteur de points
+        function updatePointCount() {
+            pointCount.textContent = currentPoints.length;
+        }
+
+        // Redessiner le canvas
+        function redraw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            
+            // Dessiner les zones enregistrées
+            zones.forEach((zone) => {
+                if (zone.points.length < 3) return;
+                
+                // Remplir la zone
+                ctx.fillStyle = zone.color + Math.round(zone.opacity * 255).toString(16).padStart(2, '0');
+                ctx.beginPath();
+                ctx.moveTo(zone.points[0].x, zone.points[0].y);
+                for (let i = 1; i < zone.points.length; i++) {
+                    ctx.lineTo(zone.points[i].x, zone.points[i].y);
+                }
+                ctx.closePath();
+                ctx.fill();
+                
+                // Contour
+                ctx.strokeStyle = zone.color;
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Nom de la zone au centre
+                const centerX = zone.points.reduce((sum, p) => sum + p.x, 0) / zone.points.length;
+                const centerY = zone.points.reduce((sum, p) => sum + p.y, 0) / zone.points.length;
+                
+                ctx.fillStyle = '#fff';
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 3;
+                ctx.font = 'bold 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.strokeText(zone.name, centerX, centerY);
+                ctx.fillText(zone.name, centerX, centerY);
+            });
+            
+            // Dessiner les points en cours
+            if (currentPoints.length > 0) {
+                ctx.fillStyle = zoneColorInput.value;
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                
+                // Dessiner les lignes
+                ctx.strokeStyle = zoneColorInput.value;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(currentPoints[0].x, currentPoints[0].y);
+                for (let i = 1; i < currentPoints.length; i++) {
+                    ctx.lineTo(currentPoints[i].x, currentPoints[i].y);
+                }
+                ctx.stroke();
+                
+                // Dessiner les points
+                currentPoints.forEach((point, index) => {
+                    ctx.fillStyle = index === 0 ? '#27ae60' : zoneColorInput.value;
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                    
+                    // Numéro du point
+                    ctx.fillStyle = '#fff';
+                    ctx.font = 'bold 12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(index + 1, point.x, point.y);
+                });
+                
+                // Prévisualiser la fermeture si assez de points
+                if (currentPoints.length > 2) {
+                    ctx.strokeStyle = zoneColorInput.value;
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([5, 5]);
+                    ctx.beginPath();
+                    ctx.moveTo(currentPoints[currentPoints.length - 1].x, currentPoints[currentPoints.length - 1].y);
+                    ctx.lineTo(currentPoints[0].x, currentPoints[0].y);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+            }
+        }
+
+        // Mettre à jour la liste des zones
+        function updateZonesList() {
+            zoneCount.textContent = zones.length;
+            
+            if (zones.length === 0) {
+                zonesList.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Aucune zone définie</p>';
+                return;
+            }
+            
+            zonesList.innerHTML = zones.map((zone, index) => `
+                <div class="zone-item">
+                    <div class="zone-info">
+                        <div class="zone-name">${zone.name}</div>
+                        <div class="zone-coords">${zone.points.length} points</div>
+                    </div>
+                    <div class="zone-actions">
+                        <button class="btn-small btn-delete" onclick="deleteZone(${index})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Supprimer une zone
+        function deleteZone(index) {
+            if (confirm(`Supprimer la zone "${zones[index].name}" ?`)) {
+                zones.splice(index, 1);
+                updateZonesList();
+                redraw();
+            }
+        }
+
+        // Supprimer toutes les zones
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('Supprimer toutes les zones ?')) {
+                zones = [];
+                updateZonesList();
+                redraw();
+            }
+        });
+
+        // Exporter en JSON
+        exportBtn.addEventListener('click', () => {
+            const exportData = {
+                mapImage: 'map.avif',
+                zones: zones
+            };
+            document.getElementById('exportData').value = JSON.stringify(exportData, null, 2);
+        });
+
+        // Copier dans le presse-papier
+        copyBtn.addEventListener('click', () => {
+            const textarea = document.getElementById('exportData');
+            if (textarea.value) {
+                textarea.select();
+                document.execCommand('copy');
+                copyBtn.textContent = '✅ Copié !';
+                setTimeout(() => {
+                    copyBtn.textContent = '📋 Copier dans le Presse-papier';
+                }, 2000);
+            }
+        });
+
+        // Rendre deleteZone accessible globalement
+        window.deleteZone = deleteZone;
+    </script>
+</body>
+</html>
+

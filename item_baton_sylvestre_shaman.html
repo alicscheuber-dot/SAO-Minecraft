@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Bottes du Débutant</title>
+    <title>SAO Minecraft - Bâton Sylvestre de Shaman</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_craft.css">
+    <link rel="stylesheet" href="item_weapon.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -61,64 +61,74 @@
             localStorage.removeItem('fromMarchand');
         }
     </script>
-    <div class="item-craft-container">
-        <div class="item-header">
-            <div class="item-icon-large">👢</div>
-            <h1 class="item-craft-title">BOTTES DU DÉBUTANT</h1>
+    <div class="weapon-container">
+        <div class="weapon-header">
+            <div class="weapon-icon-large">🌿</div>
+            <h1 class="weapon-title">BÂTON SYLVESTRE DE SHAMAN</h1>
+            <div class="weapon-subtitle">Bâton spirituel des Tréants</div>
         </div>
         
-        <div class="item-craft-card">
+        <div class="weapon-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Protège à peine contre une lame, mais c'est toujours mieux que rien.</p>
+                    <p>Grâce au Cœur de Bois et des Brindilles Enchantées un bâton est né.</p>
                 </div>
             </div>
             
-            <div class="info-section craft-info-section">
-                <div class="craft-stats">
-                    <div class="stat-item">
-                        <span class="stat-icon">⏱️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Temps de fabrication :</div>
-                            <div class="stat-value">10s</div>
-                        </div>
+            <div class="weapon-stats">
+                <div class="stat-card shaman-stat">
+                    <div class="stat-icon">🌿</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Classe</div>
+                        <div class="stat-value">Shaman</div>
                     </div>
-                    
-                    <div class="stat-item">
-                        <span class="stat-icon">📊</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Level Min. :</div>
-                            <div class="stat-value">1</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item stat-health">
-                        <span class="stat-icon">❤️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Santé :</div>
-                            <div class="stat-value">+5-7</div>
-                        </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Level Min.</div>
+                        <div class="stat-value">3</div>
                     </div>
                 </div>
             </div>
             
-            <div class="info-section">
-                <div class="info-label">🔨 Ingrédients :</div>
-                <div class="ingredients-list">
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_peau_sanglier.html'">
-                        <span class="ingredient-icon">🐗</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Peau de Sanglier</span>
-                            <span class="ingredient-quantity">x5</span>
-                        </div>
+            <div class="combat-stats">
+                <div class="combat-stat attack-stat magic-stat">
+                    <div class="combat-icon">✨</div>
+                    <div class="combat-info">
+                        <div class="combat-label">Dégâts magiques</div>
+                        <div class="combat-value">+4.5-5.6%</div>
                     </div>
-                    
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_lingot_cuivre.html'">
-                        <span class="ingredient-icon">🟫</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Lingot de Cuivre</span>
-                            <span class="ingredient-quantity">x2</span>
+                </div>
+                
+                <div class="combat-stat speed-stat">
+                    <div class="combat-icon">💥</div>
+                    <div class="combat-info">
+                        <div class="combat-label">Dégâts</div>
+                        <div class="combat-value">14.1/s</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="craft-section">
+                <div class="info-label">🔨 Craft :</div>
+                <div class="craft-info">
+                    <div class="craft-time">
+                        <span class="craft-icon">⏱️</span>
+                        <span class="craft-label">Temps de fabrication :</span>
+                        <span class="craft-value">10s</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <div class="ingredient-label">📦 Ingrédients :</div>
+                        <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_brindille_enchantee.html'">
+                            <span class="ingredient-icon">✨</span>
+                            <span class="ingredient-text">15 Brindille Enchantées</span>
+                        </div>
+                        <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_coeur_bois.html'">
+                            <span class="ingredient-icon">💚</span>
+                            <span class="ingredient-text">1 Cœur de Bois</span>
                         </div>
                     </div>
                 </div>
@@ -126,12 +136,13 @@
             
             <div class="info-section source-section">
                 <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_armure.html'">
-                    <span class="source-icon">🔨</span>
-                    <span class="source-text">Forgeron Armure</span>
+                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_arme.html'">
+                    <span class="source-icon">⚒️</span>
+                    <span class="source-text">Forgeron Arme</span>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+

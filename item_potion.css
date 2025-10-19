@@ -220,6 +220,38 @@
     font-size: 2rem;
 }
 
+/* Thème Mana (bleu) */
+.potion-mana-container {
+    background: linear-gradient(135deg, #FCE5C3 0%, #A0C4FF 50%, #402C39 100%);
+}
+
+.potion-mana-title {
+    color: #3B82F6 !important;
+    text-shadow: 
+        0 0 10px rgba(59, 130, 246, 0.5),
+        3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mana-stat {
+    background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+    border-color: #2563EB;
+}
+
+.mana-stat .stat-icon {
+    animation: manaPulse 2s ease-in-out infinite;
+}
+
+@keyframes manaPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.8));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(59, 130, 246, 1));
+        transform: scale(1.1);
+    }
+}
+
 /* Carte de prix */
 .price-card {
     display: flex;

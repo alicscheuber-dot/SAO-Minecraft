@@ -1,0 +1,236 @@
+/* Styles pour les parchemins */
+
+.parchemin-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F4E4C1 50%, #402C39 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.parchemin-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.parchemin-icon-large {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    animation: scrollUnroll 1.5s ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(139, 69, 19, 0.3));
+}
+
+@keyframes scrollUnroll {
+    0% {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(0deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.parchemin-title {
+    font-size: 3rem;
+    color: #8B4513;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(139, 69, 19, 0.2);
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.parchemin-info-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(64, 44, 57, 0.3);
+    border: 3px solid #8B4513;
+    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+/* Section effet */
+.effect-section {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 100%);
+    border-radius: 15px;
+    border: 2px solid #8B4513;
+}
+
+.effect-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.effect-icon {
+    font-size: 3rem;
+    animation: rotate360 3s linear infinite;
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.effect-content {
+    flex: 1;
+}
+
+.effect-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 0.5rem;
+}
+
+.effect-description {
+    color: #402C39;
+    line-height: 1.6;
+}
+
+.effect-description p {
+    margin: 0.5rem 0;
+}
+
+.effect-note {
+    font-style: italic;
+    color: #D2691E;
+    font-weight: bold;
+    margin-top: 1rem !important;
+    padding: 0.5rem;
+    background: rgba(210, 105, 30, 0.1);
+    border-left: 3px solid #D2691E;
+    border-radius: 4px;
+}
+
+/* Badge parchemin */
+.parchemin-badge {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    color: white;
+    border-color: #654321;
+}
+
+/* Prix élevé */
+.price-expensive {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    box-shadow: 0 4px 20px rgba(255, 165, 0, 0.5);
+    animation: priceGlow 2s ease-in-out infinite;
+}
+
+@keyframes priceGlow {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(255, 165, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 6px 30px rgba(255, 165, 0, 0.8);
+    }
+}
+
+.price-expensive .price-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #8B4513;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .parchemin-container {
+        padding: 1.5rem;
+        padding-left: 80px;
+    }
+    
+    .parchemin-icon-large {
+        font-size: 4rem;
+    }
+    
+    .parchemin-title {
+        font-size: 2rem;
+    }
+    
+    .parchemin-info-card {
+        padding: 1.5rem;
+    }
+    
+    .effect-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .effect-icon {
+        font-size: 2.5rem;
+    }
+    
+    .effect-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .parchemin-container {
+        padding: 1rem;
+        padding-left: 60px;
+    }
+    
+    .parchemin-icon-large {
+        font-size: 3rem;
+    }
+    
+    .parchemin-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.05em;
+    }
+    
+    .parchemin-info-card {
+        padding: 1rem;
+    }
+    
+    .effect-icon {
+        font-size: 2rem;
+    }
+}
+

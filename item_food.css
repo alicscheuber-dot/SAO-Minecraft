@@ -271,6 +271,73 @@
     font-weight: bold;
 }
 
+/* Section source/obtention */
+.source-section {
+    margin-top: 1.5rem;
+}
+
+.source-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #FCE5C3 0%, #F7B596 100%);
+    border-radius: 12px;
+    border: 2px solid #402C39;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.source-card.source-clickable {
+    cursor: pointer;
+}
+
+.source-card.source-clickable:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(247, 181, 150, 0.5);
+}
+
+.source-icon {
+    font-size: 2rem;
+}
+
+.source-text {
+    color: #402C39;
+}
+
+/* Carte de prix */
+.price-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+    border-radius: 12px;
+    border: 2px solid #402C39;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #402C39;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.price-icon {
+    font-size: 1.8rem;
+}
+
+.price-label {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.price-value {
+    font-size: 1.5rem;
+    color: #402C39;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .food-container {

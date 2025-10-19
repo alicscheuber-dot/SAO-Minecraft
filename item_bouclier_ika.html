@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Bottes du Débutant</title>
+    <title>SAO Minecraft - Bouclier d'Ika</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_craft.css">
+    <link rel="stylesheet" href="item_weapon.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -61,64 +61,74 @@
             localStorage.removeItem('fromMarchand');
         }
     </script>
-    <div class="item-craft-container">
-        <div class="item-header">
-            <div class="item-icon-large">👢</div>
-            <h1 class="item-craft-title">BOTTES DU DÉBUTANT</h1>
+    <div class="weapon-container">
+        <div class="weapon-header">
+            <div class="weapon-icon-large">🛡️</div>
+            <h1 class="weapon-title">BOUCLIER D'IKA</h1>
+            <div class="weapon-subtitle">Protection en carapace de tortue</div>
         </div>
         
-        <div class="item-craft-card">
+        <div class="weapon-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Protège à peine contre une lame, mais c'est toujours mieux que rien.</p>
+                    <p>Forgé dans la carapace des tortues d'Ika. Idéal pour encaisser sans broncher.</p>
                 </div>
             </div>
             
-            <div class="info-section craft-info-section">
-                <div class="craft-stats">
-                    <div class="stat-item">
-                        <span class="stat-icon">⏱️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Temps de fabrication :</div>
-                            <div class="stat-value">10s</div>
-                        </div>
+            <div class="weapon-stats">
+                <div class="stat-card class-stat">
+                    <div class="stat-icon">🛡️</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Classe</div>
+                        <div class="stat-value">Guerrier</div>
                     </div>
-                    
-                    <div class="stat-item">
-                        <span class="stat-icon">📊</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Level Min. :</div>
-                            <div class="stat-value">1</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item stat-health">
-                        <span class="stat-icon">❤️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Santé :</div>
-                            <div class="stat-value">+5-7</div>
-                        </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <div class="stat-label">Level Min.</div>
+                        <div class="stat-value">1</div>
                     </div>
                 </div>
             </div>
             
-            <div class="info-section">
-                <div class="info-label">🔨 Ingrédients :</div>
-                <div class="ingredients-list">
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_peau_sanglier.html'">
-                        <span class="ingredient-icon">🐗</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Peau de Sanglier</span>
-                            <span class="ingredient-quantity">x5</span>
-                        </div>
+            <div class="combat-stats">
+                <div class="combat-stat attack-stat">
+                    <div class="combat-icon">🛡️</div>
+                    <div class="combat-info">
+                        <div class="combat-label">Défense</div>
+                        <div class="combat-value">+0.3-0.5</div>
                     </div>
-                    
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_lingot_cuivre.html'">
-                        <span class="ingredient-icon">🟫</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Lingot de Cuivre</span>
-                            <span class="ingredient-quantity">x2</span>
+                </div>
+                
+                <div class="combat-stat speed-stat">
+                    <div class="combat-icon">❤️</div>
+                    <div class="combat-info">
+                        <div class="combat-label">Santé</div>
+                        <div class="combat-value">+3.2-4.8</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="craft-section">
+                <div class="info-label">🔨 Craft :</div>
+                <div class="craft-info">
+                    <div class="craft-time">
+                        <span class="craft-icon">⏱️</span>
+                        <span class="craft-label">Temps de fabrication :</span>
+                        <span class="craft-value">10s</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <div class="ingredient-label">📦 Ingrédients :</div>
+                        <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_carapace_ika.html'">
+                            <span class="ingredient-icon">🛡️</span>
+                            <span class="ingredient-text">12 Carapace d'Ika</span>
+                        </div>
+                        <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_ecorce_titan.html'">
+                            <span class="ingredient-icon">🌳</span>
+                            <span class="ingredient-text">7 Écorce de Titan</span>
                         </div>
                     </div>
                 </div>
@@ -126,12 +136,13 @@
             
             <div class="info-section source-section">
                 <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_armure.html'">
-                    <span class="source-icon">🔨</span>
-                    <span class="source-text">Forgeron Armure</span>
+                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_arme.html'">
+                    <span class="source-icon">⚒️</span>
+                    <span class="source-text">Forgeron Arme</span>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+

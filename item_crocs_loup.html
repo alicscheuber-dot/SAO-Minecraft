@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Bottes du Débutant</title>
+    <title>SAO Minecraft - Crocs de Loup</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_craft.css">
+    <link rel="stylesheet" href="item_detail.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -50,7 +50,7 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="items.html" class="nav-back-icon" id="backButton" title="Retour"></a>
+    <a href="ressources.html" class="nav-back-icon" id="backButton" title="Retour"></a>
     <script>
         // Détecter si on vient du marchand et ajuster le lien de retour
         const backButton = document.getElementById('backButton');
@@ -61,77 +61,76 @@
             localStorage.removeItem('fromMarchand');
         }
     </script>
-    <div class="item-craft-container">
-        <div class="item-header">
-            <div class="item-icon-large">👢</div>
-            <h1 class="item-craft-title">BOTTES DU DÉBUTANT</h1>
-        </div>
+    <div class="item-detail-container">
+        <h1 class="item-detail-title">CROCS DE LOUP</h1>
         
-        <div class="item-craft-card">
+        <div class="item-info-card">
             <div class="info-section description-section">
                 <div class="info-label">📖 Description :</div>
                 <div class="description-text">
-                    <p>Protège à peine contre une lame, mais c'est toujours mieux que rien.</p>
+                    <p>Une dent longue et acérée, prisée de certains artisans.</p>
                 </div>
             </div>
             
-            <div class="info-section craft-info-section">
-                <div class="craft-stats">
-                    <div class="stat-item">
-                        <span class="stat-icon">⏱️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Temps de fabrication :</div>
-                            <div class="stat-value">10s</div>
+            <div class="info-section category-section">
+                <div class="category-badge">
+                    <span class="category-icon">📂</span>
+                    <span>Catégorie : Matériau P1</span>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">📦 Mobs :</div>
+                <div class="mobs-list">
+                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_loup_sinistre_blanc.html'">
+                        <span class="mob-icon">🐺</span>
+                        <div class="mob-info">
+                            <span class="mob-name">Loup Sinistre Blanc</span>
+                            <div class="drop-chance">
+                                <div class="drop-bar">
+                                    <div class="drop-fill" style="width: 30%;">30%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="stat-item">
-                        <span class="stat-icon">📊</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Level Min. :</div>
-                            <div class="stat-value">1</div>
+                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_albal.html'">
+                        <span class="mob-icon">🐺</span>
+                        <div class="mob-info">
+                            <span class="mob-name">Albal</span>
+                            <div class="drop-chance">
+                                <div class="drop-bar">
+                                    <div class="drop-fill" style="width: 70%;">70%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="stat-item stat-health">
-                        <span class="stat-icon">❤️</span>
-                        <div class="stat-content">
-                            <div class="stat-label">Santé :</div>
-                            <div class="stat-value">+5-7</div>
+                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_loup_sinistre_noir.html'">
+                        <span class="mob-icon">🐺</span>
+                        <div class="mob-info">
+                            <span class="mob-name">Loup Sinistre Noir</span>
+                            <div class="drop-chance">
+                                <div class="drop-bar">
+                                    <div class="drop-fill" style="width: 30%;">30%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="info-section">
-                <div class="info-label">🔨 Ingrédients :</div>
-                <div class="ingredients-list">
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_peau_sanglier.html'">
-                        <span class="ingredient-icon">🐗</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Peau de Sanglier</span>
-                            <span class="ingredient-quantity">x5</span>
-                        </div>
+                <div class="info-label">📍 Lieu :</div>
+                <div class="locations-list">
+                    <div class="location-item">
+                        <span class="location-icon">🐺</span>
+                        <span class="location-name">Vallet des Loups</span>
                     </div>
-                    
-                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_lingot_cuivre.html'">
-                        <span class="ingredient-icon">🟫</span>
-                        <div class="ingredient-info">
-                            <span class="ingredient-name">Lingot de Cuivre</span>
-                            <span class="ingredient-quantity">x2</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="info-section source-section">
-                <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_forgeron_armure.html'">
-                    <span class="source-icon">🔨</span>
-                    <span class="source-text">Forgeron Armure</span>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
