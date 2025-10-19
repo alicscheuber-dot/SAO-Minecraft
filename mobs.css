@@ -228,6 +228,40 @@
 .mob-card:nth-child(5) { animation: fadeInUp 0.5s ease-out 0.8s both; }
 .mob-card:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.9s both; }
 
+/* Styles pour les étiquettes compactes */
+.mobs-grid-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1400px;
+    width: 100%;
+    justify-content: center;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.mob-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(252, 229, 195, 0.95) 0%, rgba(252, 229, 195, 0.8) 100%);
+    border: 2px solid #402C39;
+    border-radius: 25px;
+    color: #402C39;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(64, 44, 57, 0.2);
+    white-space: nowrap;
+}
+
+.mob-tag:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, rgba(252, 229, 195, 1) 0%, rgba(252, 229, 195, 0.9) 100%);
+    box-shadow: 0 4px 15px rgba(64, 44, 57, 0.4);
+    border-color: #FCE5C3;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .mobs-title {
@@ -258,6 +292,15 @@
     .mob-card p {
         font-size: 0.9rem;
     }
+    
+    .mobs-grid-compact {
+        gap: 0.8rem;
+    }
+    
+    .mob-tag {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -281,5 +324,14 @@
     
     .mob-card h3 {
         font-size: 1.3rem;
+    }
+    
+    .mobs-grid-compact {
+        gap: 0.6rem;
+    }
+    
+    .mob-tag {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
     }
 }
