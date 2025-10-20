@@ -255,10 +255,15 @@
     padding-bottom: 0.8rem;
 }
 
+/* Styles pour les étiquettes compactes */
 .items-grid-compact {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    max-width: 1400px;
+    width: 100%;
+    justify-content: center;
+    animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .item-tag {

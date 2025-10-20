@@ -169,6 +169,14 @@
         0 0 20px rgba(152, 195, 199, 0.5) !important;
 }
 
+.location-jardin-geants {
+    background: linear-gradient(135deg, #C0B58E 0%, #93A989 100%) !important;
+    border: 3px solid #93A989 !important;
+    box-shadow: 
+        0 4px 15px rgba(147, 169, 137, 0.3),
+        0 0 20px rgba(147, 169, 137, 0.5) !important;
+}
+
 /* Effets de survol pour tous les lieux spéciaux */
 .location-hanaka:hover,
 .location-vallet-loups:hover,
@@ -176,7 +184,8 @@
 .location-zonne-sanglier:hover,
 .location-vallee-petalles:hover,
 .location-mizunari:hover,
-.location-vallhat:hover {
+.location-vallhat:hover,
+.location-jardin-geants:hover {
     transform: translateY(-10px) scale(1.05) !important;
     box-shadow: 
         0 8px 25px rgba(64, 44, 57, 0.4),
