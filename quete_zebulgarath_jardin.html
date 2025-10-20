@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Requête de Zebulgarath</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quete_detail.css">
+    <link rel="stylesheet" href="quete_jardin.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="personal-footer">
+        <div class="footer-content">
+            <span class="discord-icon">💬</span>
+            <span class="discord-label">Discord:</span>
+            <span class="discord-username">yui028795</span>
+        </div>
+    </div>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item active" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="ressources.html" class="sidenav-item" title="Ressources">
+            <div class="sidenav-icon">⛏️</div>
+            <div class="sidenav-text">Ressources</div>
+        </a>
+        <a href="items.html" class="sidenav-item" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+        <a href="npc.html" class="sidenav-item" title="NPC">
+            <div class="sidenav-icon">👤</div>
+            <div class="sidenav-text">NPC</div>
+        </a>
+        <a href="carte_interactive.html" class="sidenav-item" title="Carte">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Carte</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="locations.html" class="nav-back-icon" title="Retour aux lieux"></a>
+    <div class="quete-detail-container">
+        <h1 class="quete-detail-title">REQUÊTE DE ZEBULGARATH</h1>
+        
+        <div class="quete-info-card">
+            <div class="info-section">
+                <div class="info-label">Type :</div>
+                <div class="info-value type-badge">Quête secondaire</div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">📍 Lieu :</div>
+                <div class="info-value location-badge">Jardin des Géants</div>
+            </div>
+            
+            <div class="info-section waypoint-section">
+                <div class="info-label">📍 Waypoint :</div>
+                <div class="waypoint-coords">
+                    <span class="coord-item">X: 372</span>
+                    <span class="coord-separator">•</span>
+                    <span class="coord-item">Z: 2477</span>
+                </div>
+            </div>
+            
+            <div class="info-section tasks-section">
+                <div class="info-label">Tâches :</div>
+                <div class="tasks-list">
+                    <div class="task-item">
+                        <span class="task-icon">🌿</span>
+                        <span class="task-text">Collecter 3 Racines Ancestrales</span>
+                        <input type="checkbox" class="task-checkbox">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section rewards-section">
+                <div class="info-label">Récompenses de quête :</div>
+                <div class="rewards-list">
+                    <div class="reward-item">
+                        <span class="reward-icon">⭐</span>
+                        <span class="reward-text">439 XP</span>
+                    </div>
+                    <div class="reward-item">
+                        <span class="reward-icon">💰</span>
+                        <span class="reward-text">1,000 Cols</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sauvegarder l'état des cases à cocher
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            const questId = 'zebulgarath-jardin';
+            const taskText = checkbox.parentElement.querySelector('.task-text').textContent;
+            const storageKey = `quest-${questId}-${taskText}`;
+            
+            // Charger l'état sauvegardé
+            checkbox.checked = localStorage.getItem(storageKey) === 'true';
+            
+            // Sauvegarder lors du changement
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(storageKey, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>
+

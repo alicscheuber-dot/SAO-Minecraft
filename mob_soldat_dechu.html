@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Quêtes</title>
+    <title>SAO Minecraft - Soldat Déchu</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="quetes.css">
+    <link rel="stylesheet" href="mob_detail.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -24,7 +24,7 @@
             <div class="sidenav-icon">🗺️</div>
             <div class="sidenav-text">Lieux</div>
         </a>
-        <a href="mobs.html" class="sidenav-item" title="Mobs">
+        <a href="mobs.html" class="sidenav-item active" title="Mobs">
             <div class="sidenav-icon">👹</div>
             <div class="sidenav-text">Mobs</div>
         </a>
@@ -36,7 +36,7 @@
             <div class="sidenav-icon">📦</div>
             <div class="sidenav-text">Items</div>
         </a>
-        <a href="quetes.html" class="sidenav-item active" title="Quêtes">
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
             <div class="sidenav-icon">📜</div>
             <div class="sidenav-text">Quêtes</div>
         </a>
@@ -50,23 +50,36 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="menu.html" class="nav-back-icon" title="Retour au menu"></a>
-    <div class="quetes-container">
-        <h1 class="quetes-title">QUÊTES</h1>
+    <a href="mobs.html" class="nav-back-icon" title="Retour aux mobs"></a>
+    <div class="mob-detail-container">
+        <h1 class="mob-detail-title">⚔️ SOLDAT DÉCHU ⚔️</h1>
         
-        <div class="quetes-grid">
-            <div class="quete-type-card" onclick="window.location.href='quete_principale.html'">
-                <div class="quete-type-icon">📜</div>
-                <h3>QUÊTE PRINCIPALE</h3>
-                <p>Suivez l'histoire principale de SAO Minecraft</p>
+        <div class="mob-info-card">
+            <div class="info-section description-section">
+                <div class="info-label">📖 Description :</div>
+                <div class="description-text">
+                    <p>Ancien guerrier tombé dans l'oubli, il erre désormais sans but, consumé par la haine. Son armure rouillée résonne au rythme de ses regrets.</p>
+                </div>
             </div>
             
-            <div class="quete-type-card" onclick="window.location.href='quete_secondaire.html'">
-                <div class="quete-type-icon">🎯</div>
-                <h3>QUÊTE SECONDAIRE</h3>
-                <p>Explorez les missions optionnelles et défis</p>
+            <div class="info-section">
+                <div class="info-label">💎 Butin :</div>
+                <div class="loot-list">
+                    <div class="loot-item">
+                        <span class="loot-icon">✨</span>
+                        <div class="loot-info">
+                            <span class="loot-name">Pièce de Métal Enchanté</span>
+                        </div>
+                        <div class="drop-chance">
+                            <div class="drop-bar">
+                                <div class="drop-fill drop-low" style="width: 20%;">20%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+

@@ -1,0 +1,87 @@
+/* Styles spécifiques pour les quêtes du Jardin des Géants */
+.quete-detail-container {
+    background: linear-gradient(135deg, #C0B58E 0%, #93A989 100%);
+}
+
+.quete-detail-title {
+    color: #2c3e2c;
+    text-shadow: 2px 2px 8px rgba(147, 169, 137, 0.5);
+}
+
+.quete-info-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid #93A989;
+    box-shadow: 0 8px 32px rgba(147, 169, 137, 0.3);
+}
+
+.type-badge {
+    background: linear-gradient(135deg, #C0B58E 0%, #93A989 100%);
+    color: #fff;
+}
+
+.location-badge {
+    background: linear-gradient(135deg, #93A989 0%, #6b8068 100%);
+    color: #fff;
+}
+
+.waypoint-coords {
+    color: #93A989;
+    border: 2px solid #93A989;
+}
+
+.coord-item {
+    background: rgba(147, 169, 137, 0.1);
+}
+
+.task-item {
+    border-left: 4px solid #93A989;
+    background: rgba(147, 169, 137, 0.05);
+}
+
+.task-item:hover {
+    background: rgba(147, 169, 137, 0.1);
+    box-shadow: 0 4px 12px rgba(147, 169, 137, 0.2);
+}
+
+.task-icon {
+    color: #93A989;
+}
+
+.task-checkbox:checked {
+    accent-color: #93A989;
+}
+
+.reward-item {
+    background: linear-gradient(135deg, rgba(192, 181, 142, 0.1) 0%, rgba(147, 169, 137, 0.1) 100%);
+    border: 2px solid #C0B58E;
+}
+
+.reward-icon {
+    color: #C0B58E;
+}
+
+.item-link {
+    color: #93A989;
+}
+
+.item-link:hover {
+    color: #6b8068;
+    border-bottom-color: #6b8068;
+}
+
+/* Animation spécifique */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quete-info-card {
+    animation: fadeInUp 0.8s ease-out;
+}
+
