@@ -28,10 +28,6 @@
             <div class="sidenav-icon">👹</div>
             <div class="sidenav-text">Mobs</div>
         </a>
-        <a href="ressources.html" class="sidenav-item" title="Ressources">
-            <div class="sidenav-icon">⛏️</div>
-            <div class="sidenav-text">Ressources</div>
-        </a>
         <a href="items.html" class="sidenav-item active" title="Items">
             <div class="sidenav-icon">📦</div>
             <div class="sidenav-text">Items</div>
@@ -50,10 +46,6 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="ressources.html" class="nav-back-icon" id="backButton" title="Retour"></a>
-    <script>
-        // Détecter si on vient du marchand et ajuster le lien de retour
-        const backButton = document.getElementById('backButton');
         if (localStorage.getItem('fromMarchand') === 'true') {
             backButton.href = 'npc_marchand_depart.html';
             backButton.title = 'Retour au marchand';

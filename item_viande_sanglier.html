@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-        <div class="personal-footer">
+    <div class="personal-footer">
         <div class="footer-content">
-            <span class="discord-icon">ðŸ’¬</span>
+            <span class="discord-icon">💬</span>
             <span class="discord-label">Discord:</span>
             <span class="discord-username">yui028795</span>
         </div>
@@ -27,10 +27,6 @@
         <a href="mobs.html" class="sidenav-item" title="Mobs">
             <div class="sidenav-icon">👹</div>
             <div class="sidenav-text">Mobs</div>
-        </a>
-        <a href="ressources.html" class="sidenav-item" title="Ressources">
-            <div class="sidenav-icon">⛏️</div>
-            <div class="sidenav-text">Ressources</div>
         </a>
         <a href="items.html" class="sidenav-item active" title="Items">
             <div class="sidenav-icon">📦</div>
@@ -50,17 +46,7 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="ressources.html" class="nav-back-icon" id="backButton" title="Retour"></a>
-    <script>
-        // Détecter si on vient du marchand et ajuster le lien de retour
-        const backButton = document.getElementById('backButton');
-        if (localStorage.getItem('fromMarchand') === 'true') {
-            backButton.href = 'npc_marchand_depart.html';
-            backButton.title = 'Retour au marchand';
-            // Réinitialiser le flag
-            localStorage.removeItem('fromMarchand');
-        }
-    </script>
+    <a href="#" class="nav-back-icon" onclick="event.preventDefault(); history.back();" title="Retour"></a>
     <div class="food-container">
         <div class="food-header">
             <div class="food-icon-large">🍖</div>
@@ -94,29 +80,21 @@
             </div>
             
             <div class="info-section">
-                <div class="info-label">📦 Source :</div>
-                <div class="mobs-list">
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_sanglier_corrompue.html'">
-                        <span class="mob-icon">🐗</span>
-                        <div class="mob-info">
-                            <span class="mob-name">Sanglier Corrompue</span>
-                            <div class="drop-chance">
-                                <div class="drop-bar">
-                                    <div class="drop-fill" style="width: 65%;">65%</div>
-                                </div>
-                            </div>
+                <div class="info-label">👹 Drops Mobs :</div>
+                <div class="ingredients-list">
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='mob_sanglier_corrompue.html'">
+                        <span class="ingredient-icon">🐗</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Sanglier Corrompue</span>
+                            <span class="ingredient-quantity">65%</span>
                         </div>
                     </div>
                     
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_pumba.html'">
-                        <span class="mob-icon">🐷</span>
-                        <div class="mob-info">
-                            <span class="mob-name">Pumba</span>
-                            <div class="drop-chance">
-                                <div class="drop-bar">
-                                    <div class="drop-fill" style="width: 65%;">65%</div>
-                                </div>
-                            </div>
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='mob_pumba.html'">
+                        <span class="ingredient-icon">🐷</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Pumba</span>
+                            <span class="ingredient-quantity">65%</span>
                         </div>
                     </div>
                 </div>
@@ -124,24 +102,26 @@
             
             <div class="info-section">
                 <div class="info-label">📍 Lieu :</div>
-                <div class="locations-list">
-                    <div class="location-item location-zonne-sanglier">
-                        <span class="location-icon">🗺️</span>
-                        <span class="location-name">Zonne Sanglier</span>
+                <div class="ingredients-list">
+                    <div class="ingredient-item">
+                        <span class="ingredient-icon">🗺️</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Zonne Sanglier</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="info-section source-section">
+            <div class="info-section">
                 <div class="info-label">🏪 Obtention :</div>
-                <div class="source-card source-clickable" onclick="window.location.href='npc_marchand_depart.html'">
-                    <span class="source-icon">🏪</span>
-                    <span class="source-text">Marchand du Départ</span>
-                </div>
-                <div class="price-card">
-                    <span class="price-icon">💰</span>
-                    <span class="price-label">Prix d'achat :</span>
-                    <span class="price-value">0.05 Cols</span>
+                <div class="ingredients-list">
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='npc_marchand_depart.html'">
+                        <span class="ingredient-icon">🏪</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Marchand du Départ</span>
+                            <span class="ingredient-quantity">0.05 Cols</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

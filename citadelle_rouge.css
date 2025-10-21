@@ -1,0 +1,120 @@
+/* Citadelle Rouge - Styles spécifiques */
+
+.location-info {
+    background: linear-gradient(135deg, #C5DCE1 0%, #DD9AA9 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(221, 154, 169, 0.3);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.location-info p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #402C39;
+    margin: 0;
+}
+
+.location-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    padding-left: 100px;
+    padding-top: 2rem;
+}
+
+.location-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #402C39;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #C5DCE1 0%, #DD9AA9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.location-description {
+    background: linear-gradient(135deg, #C5DCE1 0%, #DD9AA9 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(221, 154, 169, 0.3);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.location-description p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #402C39;
+    margin: 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.content-card {
+    background: linear-gradient(135deg, #C5DCE1 0%, #DD9AA9 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 3px solid #DD9AA9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(221, 154, 169, 0.3);
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.content-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #402C39;
+}
+
+.content-card p {
+    font-size: 1.1rem;
+    color: #402C39;
+    opacity: 0.9;
+}
+
+.content-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(221, 154, 169, 0.5);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .location-container {
+        padding: 1rem;
+        padding-left: 80px;
+    }
+
+    .location-title {
+        font-size: 2.5rem;
+    }
+
+    .location-description p {
+        font-size: 1.1rem;
+    }
+
+    .content-card h3 {
+        font-size: 1.5rem;
+    }
+}
+

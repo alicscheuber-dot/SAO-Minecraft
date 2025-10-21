@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAO Minecraft - Parchemin de Maîtrise</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_detail.css">
+    <link rel="stylesheet" href="item_craft.css">
     <link rel="stylesheet" href="item_parchemin.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
@@ -15,7 +15,7 @@
 <body>
         <div class="personal-footer">
         <div class="footer-content">
-            <span class="discord-icon">ðŸ’¬</span>
+            <span class="discord-icon">💬</span>
             <span class="discord-label">Discord:</span>
             <span class="discord-username">yui028795</span>
         </div>
@@ -28,10 +28,6 @@
         <a href="mobs.html" class="sidenav-item" title="Mobs">
             <div class="sidenav-icon">👹</div>
             <div class="sidenav-text">Mobs</div>
-        </a>
-        <a href="ressources.html" class="sidenav-item" title="Ressources">
-            <div class="sidenav-icon">⛏️</div>
-            <div class="sidenav-text">Ressources</div>
         </a>
         <a href="items.html" class="sidenav-item active" title="Items">
             <div class="sidenav-icon">📦</div>
@@ -55,13 +51,7 @@
     <script>
         // Détecter si on vient du marchand et ajuster le lien de retour
         const backButton = document.getElementById('backButton');
-        if (localStorage.getItem('fromMarchand') === 'true') {
-            backButton.href = 'npc_marchand_depart.html';
-            backButton.title = 'Retour au marchand';
-            // Réinitialiser le flag
-            localStorage.removeItem('fromMarchand');
-        }
-    </script>
+    <a href="items.html" class="nav-back-icon" title="Retour aux items"></a>
     <div class="parchemin-container">
         <div class="parchemin-header">
             <div class="parchemin-icon-large">📖</div>
@@ -87,13 +77,6 @@
                             <p class="effect-note">⚠️ Usage unique - Le parchemin est consommé après utilisation</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="info-section category-section">
-                <div class="category-badge parchemin-badge">
-                    <span class="category-icon">📂</span>
-                    <span>Catégorie : Parchemin</span>
                 </div>
             </div>
             

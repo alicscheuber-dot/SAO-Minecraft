@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Minecraft - Fil d'Araignée Renforcé</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="item_craft.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="scrollbar.css">
+    <link rel="stylesheet" href="sidenav.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="personal-footer">
+        <div class="footer-content">
+            <span class="discord-icon">💬</span>
+            <span class="discord-label">Discord:</span>
+            <span class="discord-username">yui028795</span>
+        </div>
+    </div>
+    <nav class="sidenav">
+        <a href="locations.html" class="sidenav-item" title="Lieux">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Lieux</div>
+        </a>
+        <a href="mobs.html" class="sidenav-item" title="Mobs">
+            <div class="sidenav-icon">👹</div>
+            <div class="sidenav-text">Mobs</div>
+        </a>
+        <a href="items.html" class="sidenav-item active" title="Items">
+            <div class="sidenav-icon">📦</div>
+            <div class="sidenav-text">Items</div>
+        </a>
+        <a href="quetes.html" class="sidenav-item" title="Quêtes">
+            <div class="sidenav-icon">📜</div>
+            <div class="sidenav-text">Quêtes</div>
+        </a>
+        <a href="npc.html" class="sidenav-item" title="NPC">
+            <div class="sidenav-icon">👤</div>
+            <div class="sidenav-text">NPC</div>
+        </a>
+        <a href="carte_interactive.html" class="sidenav-item" title="Carte">
+            <div class="sidenav-icon">🗺️</div>
+            <div class="sidenav-text">Carte</div>
+        </a>
+    </nav>
+    <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
+    <a href="items.html" class="nav-back-icon" title="Retour aux items"></a>
+    
+    <div class="item-craft-container">
+        <div class="item-header">
+            <div class="item-icon-large">🕸️</div>
+            <h1 class="item-craft-title">FIL D'ARAIGNÉE RENFORCÉ</h1>
+        </div>
+        
+        <div class="item-craft-card">
+            <div class="info-section description-section">
+                <div class="info-label">📖 Description :</div>
+                <div class="description-text">
+                    <p>Fil de meilleur qualité qui peut être utilisée pour de meilleurs outils.</p>
+                </div>
+            </div>
+            
+            <div class="info-section craft-info-section">
+                <div class="craft-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">⏱️</span>
+                        <div class="stat-content">
+                            <div class="stat-label">Temps de fabrication :</div>
+                            <div class="stat-value">1m</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-icon">👤</span>
+                        <div class="stat-content">
+                            <div class="stat-label">Fabriquant :</div>
+                            <div class="stat-value clickable" onclick="window.location.href='npc_forgeron_donjon.html'" style="cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5E891B'" onmouseout="this.style.textDecoration='none'; this.style.color='#402C39'">Forgeron Donjon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">🔨 Ingrédients :</div>
+                <div class="ingredients-list">
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_fil_araignee.html'">
+                        <span class="ingredient-icon">🕸️</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Fil d'Araignée</span>
+                            <span class="ingredient-quantity">x3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='item_minerai_fer.html'">
+                        <span class="ingredient-icon">⛏️</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Minerai de Fer</span>
+                            <span class="ingredient-quantity">x6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

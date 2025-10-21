@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAO Minecraft - Noyau de Slime</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="item_detail.css">
+    <link rel="stylesheet" href="item_craft.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-        <div class="personal-footer">
+    <div class="personal-footer">
         <div class="footer-content">
-            <span class="discord-icon">ðŸ’¬</span>
+            <span class="discord-icon">💬</span>
             <span class="discord-label">Discord:</span>
             <span class="discord-username">yui028795</span>
         </div>
@@ -27,10 +27,6 @@
         <a href="mobs.html" class="sidenav-item" title="Mobs">
             <div class="sidenav-icon">👹</div>
             <div class="sidenav-text">Mobs</div>
-        </a>
-        <a href="ressources.html" class="sidenav-item" title="Ressources">
-            <div class="sidenav-icon">⛏️</div>
-            <div class="sidenav-text">Ressources</div>
         </a>
         <a href="items.html" class="sidenav-item active" title="Items">
             <div class="sidenav-icon">📦</div>
@@ -50,46 +46,38 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="ressources.html" class="nav-back-icon" id="backButton" title="Retour"></a>
-    <script>
-        // Détecter si on vient du marchand et ajuster le lien de retour
-        const backButton = document.getElementById('backButton');
-        if (localStorage.getItem('fromMarchand') === 'true') {
-            backButton.href = 'npc_marchand_depart.html';
-            backButton.title = 'Retour au marchand';
-            // Réinitialiser le flag
-            localStorage.removeItem('fromMarchand');
-        }
-    </script>
-    <div class="item-detail-container item-rare-container">
-        <h1 class="item-detail-title item-rare-title">NOYAU DE SLIME</h1>
-        <div class="rarity-badge">RARE</div>
+    <a href="#" class="nav-back-icon" onclick="event.preventDefault(); history.back();" title="Retour"></a>
+    <div class="item-craft-container item-rare-container">
+        <div class="item-header">
+            <div class="item-icon-large">💎</div>
+            <h1 class="item-craft-title item-rare-title">NOYAU DE SLIME</h1>
+            <div class="rarity-badge">RARE</div>
+        </div>
         
-        <div class="item-info-card item-rare-card">
+        <div class="item-craft-card item-rare-card">
+            <div class="info-section description-section">
+                <div class="info-label">📖 Description :</div>
+                <div class="description-text">
+                    <p>Un noyau rare et précieux contenu dans certains slimes. Ses propriétés magiques sont recherchées pour de puissants enchantements.</p>
+                </div>
+            </div>
+            
             <div class="info-section">
-                <div class="info-label">📦 Mobs :</div>
-                <div class="mobs-list">
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_slime_soigneur.html'">
-                        <span class="mob-icon">💚</span>
-                        <div class="mob-info">
-                            <span class="mob-name">Slime Soigneur</span>
-                            <div class="drop-chance">
-                                <div class="drop-bar">
-                                    <div class="drop-fill drop-rare" style="width: 5%;">5%</div>
-                                </div>
-                            </div>
+                <div class="info-label">👹 Drops Mobs :</div>
+                <div class="ingredients-list">
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='mob_slime_soigneur.html'">
+                        <span class="ingredient-icon">💚</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Slime Soigneur</span>
+                            <span class="ingredient-quantity">5%</span>
                         </div>
                     </div>
                     
-                    <div class="mob-item mob-clickable" onclick="window.location.href='mob_slime_magicien.html'">
-                        <span class="mob-icon">🔮</span>
-                        <div class="mob-info">
-                            <span class="mob-name">Slime Magicien</span>
-                            <div class="drop-chance">
-                                <div class="drop-bar">
-                                    <div class="drop-fill drop-rare" style="width: 5%;">5%</div>
-                                </div>
-                            </div>
+                    <div class="ingredient-item ingredient-clickable" onclick="window.location.href='mob_slime_magicien.html'">
+                        <span class="ingredient-icon">🔮</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Slime Magicien</span>
+                            <span class="ingredient-quantity">5%</span>
                         </div>
                     </div>
                 </div>
@@ -97,10 +85,12 @@
             
             <div class="info-section">
                 <div class="info-label">📍 Lieu :</div>
-                <div class="locations-list">
-                    <div class="location-item">
-                        <span class="location-icon">🗺️</span>
-                        <span class="location-name">Marécage de Wallha</span>
+                <div class="ingredients-list">
+                    <div class="ingredient-item">
+                        <span class="ingredient-icon">🗺️</span>
+                        <div class="ingredient-info">
+                            <span class="ingredient-name">Marécage de Wallha</span>
+                        </div>
                     </div>
                 </div>
             </div>
