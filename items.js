@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    const itemCards = document.querySelectorAll('.item-card');
+    const itemTags = document.querySelectorAll('.item-tag');
     
     // Fonction de recherche
     function searchItems() {
@@ -9,32 +9,37 @@ document.addEventListener('DOMContentLoaded', function() {
         let visibleCount = 0;
         let foundItems = [];
         
-        itemCards.forEach(card => {
-            const itemName = card.querySelector('h3').textContent.toLowerCase();
-            const itemDescription = card.querySelector('p').textContent.toLowerCase();
+        itemTags.forEach(tag => {
+            const itemName = tag.textContent.toLowerCase();
             
-            const isMatch = itemName.includes(searchTerm) || 
-                          itemDescription.includes(searchTerm);
+            const isMatch = itemName.includes(searchTerm);
             
             if (isMatch) {
-                card.classList.remove('hidden');
+                tag.classList.remove('hidden');
                 visibleCount++;
                 if (searchTerm) {
-                    foundItems.push(card.querySelector('h3').textContent);
+                    foundItems.push({
+                        name: tag.textContent,
+                        onclick: tag.getAttribute('onclick')
+                    });
                 }
             } else {
-                card.classList.add('hidden');
+                tag.classList.add('hidden');
             }
         });
         
         // Afficher les résultats de recherche
         if (searchTerm) {
             if (foundItems.length > 0) {
+                const itemsList = foundItems.map(item => 
+                    `<span class="search-result-item" onclick="${item.onclick}" style="cursor: pointer; color: #5E891B; font-weight: bold; text-decoration: underline; margin: 0 0.3rem;">${item.name}</span>`
+                ).join(', ');
+                
                 searchResults.innerHTML = `
                     <div style="font-weight: bold; margin-bottom: 0.5rem;">
                         ${foundItems.length} item(s) trouvé(s) :
                     </div>
-                    <div>${foundItems.join(', ')}</div>
+                    <div>${itemsList}</div>
                 `;
                 searchResults.classList.add('show');
             } else {
@@ -49,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
             searchResults.classList.remove('show');
         }
         
-        // Animation des cartes visibles
+        // Animation des tags visibles
         setTimeout(() => {
-            itemCards.forEach((card, index) => {
-                if (!card.classList.contains('hidden')) {
-                    card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s both`;
+            itemTags.forEach((tag, index) => {
+                if (!tag.classList.contains('hidden')) {
+                    tag.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05}s both`;
                 }
             });
         }, 100);
@@ -74,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Focus automatique sur la barre de recherche
     searchInput.focus();
     
-    // Animation d'apparition des cartes
-    itemCards.forEach((card, index) => {
-        card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1 + 0.7}s both`;
+    // Animation d'apparition des tags
+    itemTags.forEach((tag, index) => {
+        tag.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05 + 0.4}s both`;
     });
 });

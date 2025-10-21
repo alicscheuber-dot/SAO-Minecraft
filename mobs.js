@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    const mobCards = document.querySelectorAll('.mob-card');
+    const mobTags = document.querySelectorAll('.mob-tag');
     
     // Fonction de recherche
     function searchMobs() {
@@ -9,32 +9,37 @@ document.addEventListener('DOMContentLoaded', function() {
         let visibleCount = 0;
         let foundMobs = [];
         
-        mobCards.forEach(card => {
-            const mobName = card.querySelector('h3').textContent.toLowerCase();
-            const mobDescription = card.querySelector('p').textContent.toLowerCase();
+        mobTags.forEach(tag => {
+            const mobName = tag.textContent.toLowerCase();
             
-            const isMatch = mobName.includes(searchTerm) || 
-                          mobDescription.includes(searchTerm);
+            const isMatch = mobName.includes(searchTerm);
             
             if (isMatch) {
-                card.classList.remove('hidden');
+                tag.classList.remove('hidden');
                 visibleCount++;
                 if (searchTerm) {
-                    foundMobs.push(card.querySelector('h3').textContent);
+                    foundMobs.push({
+                        name: tag.textContent,
+                        onclick: tag.getAttribute('onclick')
+                    });
                 }
             } else {
-                card.classList.add('hidden');
+                tag.classList.add('hidden');
             }
         });
         
         // Afficher les résultats de recherche
         if (searchTerm) {
             if (foundMobs.length > 0) {
+                const mobsList = foundMobs.map(mob => 
+                    `<span class="search-result-item" onclick="${mob.onclick}" style="cursor: pointer; color: #5E891B; font-weight: bold; text-decoration: underline; margin: 0 0.3rem;">${mob.name}</span>`
+                ).join(', ');
+                
                 searchResults.innerHTML = `
                     <div style="font-weight: bold; margin-bottom: 0.5rem;">
                         ${foundMobs.length} mob(s) trouvé(s) :
                     </div>
-                    <div>${foundMobs.join(', ')}</div>
+                    <div>${mobsList}</div>
                 `;
                 searchResults.classList.add('show');
             } else {
@@ -49,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
             searchResults.classList.remove('show');
         }
         
-        // Animation des cartes visibles
+        // Animation des tags visibles
         setTimeout(() => {
-            mobCards.forEach((card, index) => {
-                if (!card.classList.contains('hidden')) {
-                    card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s both`;
+            mobTags.forEach((tag, index) => {
+                if (!tag.classList.contains('hidden')) {
+                    tag.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05}s both`;
                 }
             });
         }, 100);
@@ -74,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Focus automatique sur la barre de recherche
     searchInput.focus();
     
-    // Animation d'apparition des cartes
-    mobCards.forEach((card, index) => {
-        card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1 + 0.6}s both`;
+    // Animation d'apparition des tags
+    mobTags.forEach((tag, index) => {
+        tag.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05 + 0.4}s both`;
     });
 });

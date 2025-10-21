@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAO Minecraft - Smoug Dévastateur Déchu</title>
+    <title>SAO Minecraft - Mobs Citadelle Rouge</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mob_detail.css">
+    <link rel="stylesheet" href="mobs.css">
+    <link rel="stylesheet" href="citadelle_rouge.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="scrollbar.css">
     <link rel="stylesheet" href="sidenav.css">
@@ -46,34 +47,19 @@
         </a>
     </nav>
     <a href="menu.html" class="nav-home-icon" title="Retour au menu principal"></a>
-    <a href="mobs.html" class="nav-back-icon" title="Retour aux mobs"></a>
-    <div class="mob-detail-container">
-        <h1 class="mob-detail-title">⚔️ SMOUG DÉVASTATEUR DÉCHU ⚔️</h1>
+    <a href="#" class="nav-back-icon" onclick="event.preventDefault(); history.back();" title="Retour"></a>
+    
+    <div class="mobs-container">
+        <h1 class="mobs-title">MOBS - CITADELLE ROUGE</h1>
         
-        <div class="mob-info-card">
-            <div class="info-section description-section">
-                <div class="info-label">📖 Description :</div>
-                <div class="description-text">
-                    <p>Chevalier brutal à la force inégalée, Smoug écrasait les ennemis au nom d'un empire disparu.</p>
-                </div>
-            </div>
-            
-            <div class="info-section">
-                <div class="info-label">💎 Butin :</div>
-                <div class="loot-list">
-                    <div class="loot-item">
-                        <span class="loot-icon">🪓</span>
-                        <div class="loot-info">
-                            <span class="loot-name">Hallebard Royal</span>
-                        </div>
-                        <div class="drop-chance">
-                            <div class="drop-bar">
-                                <div class="drop-fill drop-very-low" style="width: 1%;">1%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="location-info">
+            <p>🏰 Les bandits qui infestent La Citadelle Rouge sont des adversaires redoutables et organisés.</p>
+        </div>
+        
+        <div class="mobs-grid-compact">
+            <div class="mob-tag" onclick="window.location.href='mob_bandit_archer.html'">🏹 Bandit Archer</div>
+            <div class="mob-tag" onclick="window.location.href='mob_bandit_assassin.html'">🗡️ Bandit Assassin</div>
+            <div class="mob-tag" onclick="window.location.href='mob_bandit_robuste.html'">🛡️ Bandit Robuste</div>
         </div>
     </div>
 </body>

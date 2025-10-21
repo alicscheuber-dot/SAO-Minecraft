@@ -177,6 +177,26 @@
         0 0 20px rgba(147, 169, 137, 0.5) !important;
 }
 
+.location-chateau-abandonne {
+    background: linear-gradient(135deg, #4a4a4a 0%, #2c2c2c 100%) !important;
+    border: 3px solid #1a1a1a !important;
+    box-shadow: 
+        0 4px 15px rgba(26, 26, 26, 0.5),
+        0 0 20px rgba(74, 74, 74, 0.5) !important;
+}
+
+.location-chateau-abandonne h3 {
+    color: #FCE5C3 !important;
+}
+
+.location-citadelle-rouge {
+    background: linear-gradient(135deg, #C5DCE1 0%, #DD9AA9 100%) !important;
+    border: 3px solid #DD9AA9 !important;
+    box-shadow: 
+        0 4px 15px rgba(221, 154, 169, 0.5),
+        0 0 20px rgba(197, 220, 225, 0.5) !important;
+}
+
 /* Effets de survol pour tous les lieux spéciaux */
 .location-hanaka:hover,
 .location-vallet-loups:hover,
@@ -185,7 +205,9 @@
 .location-vallee-petalles:hover,
 .location-mizunari:hover,
 .location-vallhat:hover,
-.location-jardin-geants:hover {
+.location-jardin-geants:hover,
+.location-chateau-abandonne:hover,
+.location-citadelle-rouge:hover {
     transform: translateY(-10px) scale(1.05) !important;
     box-shadow: 
         0 8px 25px rgba(64, 44, 57, 0.4),
